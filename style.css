@@ -1,1 +1,62 @@
+/* Reset */
+* { margin:0; padding:0; box-sizing:border-box; font-family: 'Inter', sans-serif; }
+html { scroll-behavior: smooth; }
+
+/* Colores */
+:root {
+  --azul-oscuro: #0A1F44;
+  --azul-medio: #1E3A8A;
+  --celeste: #60A5FA;
+  --blanco: #FFFFFF;
+  --gris-claro: #F4F6F8;
+}
+
+body { background: var(--azul-oscuro); color: var(--blanco); }
+
+/* Navbar */
+nav {
+  position: fixed;
+  width: 100%;
+  background: rgba(10,31,68,0.95);
+  display: flex;
+  justify-content: center;
+  padding: 15px 0;
+  z-index: 1000;
+}
+nav ul { display: flex; gap: 30px; list-style: none; }
+nav ul li a { color: var(--blanco); text-decoration: none; font-weight: 600; transition: 0.3s; }
+nav ul li a:hover { color: var(--celeste); }
+
+/* Hero */
+.hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 50px; background: var(--azul-oscuro); }
+.hero h1 { font-size: 3em; color: var(--celeste); margin-bottom: 20px; }
+.hero p { font-size: 1.3em; margin-bottom: 30px; }
+.btn { text-decoration: none; padding: 12px 25px; background: var(--azul-medio); color: var(--blanco); border-radius: 8px; font-weight: 600; transition: 0.3s; }
+.btn:hover { background: var(--celeste); color: var(--azul-oscuro); }
+
+/* Secciones */
+section { padding: 100px 20px 60px 20px; max-width: 1000px; margin: 0 auto; }
+section h2 { font-size: 2.5em; margin-bottom: 20px; color: var(--celeste); }
+section p { font-size: 1.1em; line-height: 1.8; margin-bottom: 20px; }
+
+/* Ponentes */
+.speakers { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
+.speaker { background: var(--gris-claro); color: var(--azul-oscuro); border-radius: 10px; padding: 20px; transition: 0.3s; }
+.speaker img { width: 100%; border-radius: 50%; margin-bottom: 15px; }
+.speaker h3 { margin-bottom: 5px; }
+.speaker p { font-size: 0.9em; }
+
+/* Patrocinadores */
+.sponsors { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; align-items: center; }
+.sponsors img { max-width: 150px; filter: grayscale(100%); transition: 0.3s; }
+.sponsors img:hover { filter: grayscale(0%); }
+
+/* Footer */
+footer { background: var(--azul-medio); padding: 20px; text-align: center; font-size: 0.9em; color: var(--blanco); }
+
+/* Responsive */
+@media(max-width:768px){
+  .hero h1 { font-size: 2.2em; }
+  section h2 { font-size: 2em; }
+}
 
