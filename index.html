@@ -4,9 +4,100 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CIDETIC 2025 - Student Chapter ACI UNI</title>
-  <link rel="stylesheet" href="style.css">
+  
+  <!-- Fuente Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Paleta de colores */
+    :root {
+      --azul-oscuro: #0A1F44;
+      --azul-medio: #1E3A8A;
+      --celeste: #60A5FA;
+      --blanco: #FFFFFF;
+      --gris-claro: #F4F6F8;
+      --fondo-hero: linear-gradient(135deg, #0A1F44, #1E3A8A);
+    }
+
+    /* Reset y fuente */
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Inter', sans-serif; }
+    html { scroll-behavior: smooth; }
+
+    body { background: var(--azul-oscuro); color: var(--blanco); }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      top:0;
+      width: 100%;
+      background: rgba(10,31,68,0.95);
+      display: flex;
+      justify-content: center;
+      padding: 15px 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    nav ul { display: flex; gap: 30px; list-style: none; }
+    nav ul li a { color: var(--blanco); text-decoration: none; font-weight: 600; transition: 0.3s; }
+    nav ul li a:hover { color: var(--celeste); }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 50px 20px;
+      background: var(--fondo-hero);
+      background-size: cover;
+      background-position: center;
+    }
+    .hero h1 { font-size: 3em; color: var(--celeste); margin-bottom: 20px; text-shadow: 2px 2px 8px rgba(0,0,0,0.5); }
+    .hero p { font-size: 1.3em; margin-bottom: 30px; text-shadow: 1px 1px 4px rgba(0,0,0,0.5); }
+    .btn {
+      text-decoration: none;
+      padding: 14px 30px;
+      margin: 5px;
+      background: var(--celeste);
+      color: var(--azul-oscuro);
+      border-radius: 10px;
+      font-weight: 700;
+      transition: 0.3s;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+    .btn:hover {
+      background: var(--blanco);
+      color: var(--azul-medio);
+      transform: translateY(-3px);
+    }
+
+    /* Secciones */
+    section { padding: 100px 20px 60px 20px; max-width: 1000px; margin: 0 auto; }
+    section h2 { font-size: 2.5em; margin-bottom: 20px; color: var(--celeste); text-align: center; }
+    section p { font-size: 1.1em; line-height: 1.8; margin-bottom: 20px; text-align: center; }
+
+    /* Ponentes */
+    .speakers { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
+    .speaker { background: var(--gris-claro); color: var(--azul-oscuro); border-radius: 10px; padding: 20px; text-align: center; transition: 0.3s; }
+    .speaker img { width: 150px; height:150px; object-fit: cover; border-radius: 50%; margin-bottom: 15px; }
+    .speaker h3 { margin-bottom: 5px; }
+    .speaker p { font-size: 0.9em; }
+
+    /* Footer */
+    footer { background: var(--azul-medio); padding: 20px; text-align: center; font-size: 0.9em; color: var(--blanco); }
+
+    /* Responsive */
+    @media(max-width:768px){
+      .hero h1 { font-size: 2.2em; }
+      section h2 { font-size: 2em; }
+    }
+  </style>
 </head>
 <body>
+
+  <!-- Navbar -->
   <nav>
     <ul>
       <li><a href="index.html">Inicio</a></li>
@@ -17,21 +108,44 @@
     </ul>
   </nav>
 
+  <!-- Hero -->
   <section class="hero">
     <h1>CIDETIC 2025</h1>
     <p>Congreso de Innovación, Desarrollo y Tecnología en la Ingeniería Civil<br>24 al 28 de noviembre | Lima, Perú</p>
     <a href="inscripciones.html" class="btn">Regístrate ahora</a>
+    <a href="programa.html" class="btn">Ver Programa</a>
   </section>
 
+  <!-- Sobre el Evento -->
   <section id="about">
     <h2>Sobre el Evento</h2>
-    <p>El CIDETIC 2025, organizado por el <strong>Student Chapter ACI UNI</strong>, reúne a investigadores, profesionales y estudiantes de ingeniería civil para compartir los últimos avances en innovación, desarrollo y tecnología aplicada a la construcción y gestión de infraestructuras.</p>
-    <p>Los participantes disfrutarán de conferencias magistrales, talleres prácticos y espacios de networking con líderes del sector.</p>
+    <p>Organizado por el <strong>Student Chapter ACI UNI</strong>, el CIDETIC 2025 reúne a investigadores, profesionales y estudiantes de ingeniería civil para compartir los últimos avances en innovación, desarrollo y tecnología aplicada a la construcción e infraestructuras.</p>
+    <p>Participa en conferencias, talleres prácticos y espacios de networking con líderes del sector.</p>
   </section>
 
+  <!-- Ponentes -->
+  <section id="speakers">
+    <h2>Ponentes Destacados</h2>
+    <div class="speakers">
+      <div class="speaker">
+        <img src="images/ponentes/ana-torres.jpg" alt="Ana Torres">
+        <h3>Ing. Ana Torres</h3>
+        <p>Especialista en Modelado BIM, España</p>
+      </div>
+      <div class="speaker">
+        <img src="images/ponentes/carlos-paredes.jpg" alt="Carlos Paredes">
+        <h3>Dr. Carlos Paredes</h3>
+        <p>Investigador en Materiales Inteligentes, Perú</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
     Organizado por el <strong>Student Chapter ACI UNI</strong> | © 2025 Todos los derechos reservados
   </footer>
+
 </body>
 </html>
+
 
