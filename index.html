@@ -8,9 +8,7 @@
   <style>
     :root {
       --azul-oscuro: #0A1F44;
-      --azul-medio: #1E3A8A;
       --blanco: #FFFFFF;
-      --gris-claro: #F4F6F8;
       --celeste: #60A5FA;
     }
 
@@ -33,41 +31,46 @@
     nav ul li a:hover { color: var(--celeste); }
     nav ul li a.active { color: var(--celeste); }
 
-    /* Hero */
+    /* Hero visual */
     .hero {
-      min-height: 90vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
       padding: 50px 20px;
-      background: linear-gradient(135deg, var(--azul-oscuro), var(--azul-medio));
+      background: linear-gradient(rgba(10,31,68,0.7), rgba(10,31,68,0.7)), url('images/hero-cidetec.jpg') no-repeat center center/cover;
       color: var(--blanco);
     }
-    .hero h1 { font-size: 3em; margin-bottom: 20px; }
-    .hero p { font-size: 1.3em; margin-bottom: 30px; }
-    .btn { text-decoration: none; padding: 12px 25px; background: var(--celeste); color: var(--azul-oscuro); border-radius: 8px; font-weight: 600; transition: 0.3s; }
-    .btn:hover { background: var(--blanco); color: var(--azul-oscuro); }
+    .hero h1 { font-size: 3.2em; margin-bottom: 20px; text-shadow: 2px 2px 8px rgba(0,0,0,0.5);}
+    .hero p { font-size: 1.3em; margin-bottom: 30px; text-shadow: 1px 1px 5px rgba(0,0,0,0.5);}
+    .btn { text-decoration: none; padding: 14px 30px; background: var(--celeste); color: var(--azul-oscuro); border-radius: 50px; font-weight: 700; transition: 0.3s; }
+    .btn:hover { background: var(--blanco); color: var(--azul-oscuro); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
 
     /* Secciones */
     section { padding: 100px 20px 60px 20px; max-width: 1000px; margin: 0 auto; text-align: center; }
-    section h2 { font-size: 2.5em; margin-bottom: 20px; color: var(--azul-oscuro); }
+    section h2 { font-size: 2.8em; margin-bottom: 20px; color: var(--azul-oscuro); }
     section p { font-size: 1.1em; line-height: 1.8; margin-bottom: 20px; }
+
+    /* Programa resumido */
+    .program ul { list-style:none; padding:0; max-width:600px; margin:0 auto; text-align:left; font-size:1.1em; color:#334155; }
+    .program li { margin-bottom:12px; }
 
     /* Ponentes */
     .speakers { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
-    .speaker { background: var(--gris-claro); color: var(--azul-oscuro); border-radius: 10px; padding: 20px; transition: 0.3s; }
+    .speaker { background: #f4f6f8; color: var(--azul-oscuro); border-radius: 12px; padding: 20px; transition: 0.3s; }
     .speaker img { width: 100%; border-radius: 50%; margin-bottom: 15px; }
     .speaker h3 { margin-bottom: 5px; }
-    .speaker p { font-size: 0.9em; }
+    .speaker p { font-size: 0.95em; }
 
     /* Footer */
-    footer { background: var(--azul-oscuro); color: var(--blanco); text-align: center; padding: 20px; font-size: 0.9em; }
+    footer { background: var(--azul-oscuro); color: var(--blanco); text-align: center; padding: 25px; font-size: 0.95em; }
 
+    /* Responsivo */
     @media(max-width:768px){
-      .hero h1 { font-size: 2.2em; }
-      section h2 { font-size: 2em; }
+      .hero h1 { font-size: 2.4em; }
+      section h2 { font-size: 2.2em; }
     }
   </style>
 </head>
@@ -84,7 +87,7 @@
     </ul>
   </nav>
 
-  <!-- Hero -->
+  <!-- Hero visual -->
   <section class="hero">
     <h1>CIDETIC 2025</h1>
     <p>Congreso de Innovación, Desarrollo y Tecnología en la Ingeniería Civil<br>24 al 28 de noviembre | Lima, Perú</p>
@@ -95,13 +98,13 @@
   <section id="about">
     <h2>Sobre el Evento</h2>
     <p>El CIDETIC 2025, organizado por el <strong>Student Chapter ACI UNI</strong>, reúne a investigadores, profesionales y estudiantes de ingeniería civil para compartir los últimos avances en innovación, desarrollo y tecnología aplicada a la construcción y gestión de infraestructuras.</p>
-    <p>Los participantes disfrutarán de conferencias magistrales, talleres prácticos y espacios de networking con líderes del sector.</p>
+    <p>Participa en conferencias magistrales, talleres prácticos y espacios de networking con líderes del sector.</p>
   </section>
 
   <!-- Programa resumido -->
-  <section id="program">
+  <section id="program" class="program">
     <h2>Programa Resumido</h2>
-    <ul style="list-style:none; padding:0; font-size:1.1em; color:#334155; max-width:600px; margin:0 auto; text-align:left;">
+    <ul>
       <li><strong>24 nov:</strong> Inauguración y conferencias magistrales</li>
       <li><strong>25 nov:</strong> Talleres prácticos</li>
       <li><strong>26 nov:</strong> Paneles y debates</li>
@@ -134,4 +137,3 @@
 
 </body>
 </html>
-
