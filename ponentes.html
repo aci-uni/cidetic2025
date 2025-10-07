@@ -1,16 +1,162 @@
-<section>
-  <h2>Ponentes Destacados</h2>
-  <div class="speakers">
-    <div class="speaker">
-      <img src="images/ponentes/ana-torres.jpg" alt="Ana Torres">
-      <h3>Ing. Ana Torres</h3>
-      <p>Especialista en Modelado BIM, España</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ponentes | CIDETIC 2025</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --azul-oscuro: #0A1F44;
+      --blanco: #FFFFFF;
+      --celeste: #60A5FA;
+      --gris-claro: #F4F6F8;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Inter', sans-serif; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--blanco); color: var(--azul-oscuro); }
+
+    /* Navbar (igual que index) */
+    nav {
+      position: fixed;
+      width: 100%;
+      background: var(--azul-oscuro);
+      display: flex;
+      justify-content: center;
+      padding: 15px 0;
+      z-index: 1000;
+    }
+    nav ul { display: flex; gap: 30px; list-style: none; }
+    nav ul li a { color: var(--blanco); text-decoration: none; font-weight: 600; transition: 0.3s; }
+    nav ul li a:hover { color: var(--celeste); }
+    nav ul li a.active { color: var(--celeste); }
+
+    /* Hero */
+    .hero-small {
+      text-align: center;
+      padding: 8rem 3rem 4rem;
+      background: linear-gradient(120deg, var(--azul-oscuro), var(--celeste));
+      color: #fff;
+      margin-top: 0;
+    }
+    .hero-small h1 { font-size: 2.8rem; margin-bottom: 15px; }
+    .hero-small p { font-size: 1.1rem; }
+
+    /* Sección Ponentes */
+    main { max-width: 1100px; margin: 3rem auto; padding: 0 20px; }
+    h2 { font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--azul-oscuro); text-align: center; }
+
+    .speakers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+
+    .speaker-card {
+      background: var(--gris-claro);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .speaker-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .speaker-card img {
+      width: 100%;
+      height: 180px; /* alto fijo tipo post */
+      object-fit: cover;
+      display: block;
+    }
+
+    .speaker-card .info {
+      padding: 15px;
+      text-align: center;
+    }
+
+    .speaker-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+      color: var(--azul-oscuro);
+    }
+
+    .speaker-card p {
+      font-size: 0.95rem;
+      color: #334155;
+    }
+
+    /* Footer */
+    footer { background: var(--azul-oscuro); color: var(--blanco); text-align: center; padding: 25px; font-size: 0.95em; margin-top: 3rem; }
+
+    @media(max-width:768px){
+      .hero-small h1 { font-size: 2.2rem; }
+      h2 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="programa.html">Programa</a></li>
+      <li><a href="ponentes.html" class="active">Ponentes</a></li>
+      <li><a href="inscripciones.html">Inscripciones</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero-small">
+    <h1>Ponentes Destacados</h1>
+    <p>Conoce a los expertos que compartirán su conocimiento en CIDETIC 2025</p>
+  </section>
+
+  <!-- Ponentes -->
+  <main>
+    <h2>Nuestros Ponentes</h2>
+    <div class="speakers-grid">
+      <div class="speaker-card">
+        <img src="images/ponentes/ana-torres.jpg" alt="Ana Torres">
+        <div class="info">
+          <h3>Ing. Ana Torres</h3>
+          <p>Especialista en Modelado BIM, España</p>
+        </div>
+      </div>
+      <div class="speaker-card">
+        <img src="images/ponentes/carlos-paredes.jpg" alt="Carlos Paredes">
+        <div class="info">
+          <h3>Dr. Carlos Paredes</h3>
+          <p>Investigador en Materiales Inteligentes, Perú</p>
+        </div>
+      </div>
+      <div class="speaker-card">
+        <img src="images/ponentes/maria-gomez.jpg" alt="María Gómez">
+        <div class="info">
+          <h3>Ing. María Gómez</h3>
+          <p>Gestión de Proyectos de Construcción, Chile</p>
+        </div>
+      </div>
+      <div class="speaker-card">
+        <img src="images/ponentes/juan-lopez.jpg" alt="Juan López">
+        <div class="info">
+          <h3>Dr. Juan López</h3>
+          <p>Infraestructura Sostenible, México</p>
+        </div>
+      </div>
     </div>
-    <div class="speaker">
-      <img src="images/ponentes/carlos-paredes.jpg" alt="Carlos Paredes">
-      <h3>Dr. Carlos Paredes</h3>
-      <p>Investigador en Materiales Inteligentes, Perú</p>
-    </div>
-  </div>
-</section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    Organizado por el <strong>Student Chapter ACI UNI</strong> | © 2025 Todos los derechos reservados
+  </footer>
+
+</body>
+</html>
 
