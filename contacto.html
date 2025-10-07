@@ -353,7 +353,7 @@
       color: var(--blanco);
     }
 
-    /* Formulario de Contacto - Mantenido para consultas específicas de CIDETIC */
+    /* Formulario de Contacto - Para consultas específicas de CIDETIC */
     .form-container {
       max-width: 600px;
       margin: 50px auto;
@@ -440,7 +440,7 @@
     }
     .show { display: block; }
 
-    /* Footer - Adaptado con email del referencia */
+    /* Footer - Adaptado con copyright del referencia */
     footer { 
       background: linear-gradient(135deg, var(--azul-oscuro), var(--azul-medio)); 
       color: var(--blanco); 
@@ -465,7 +465,7 @@
     /* Responsive - Consistente con las otras páginas */
     @media (max-width: 768px) {
       .nav-container { padding: 0 15px; flex-direction: column; gap: 10px; }
-      .nav-menu { gap: 20px; order: 2; }
+      .nav-menu { gap: 20px; order: 2; flex-wrap: wrap; justify-content: center; }
       .nav-logo { order: 1; }
       .nav-cta { order: 3; }
       .hero { padding: 120px 20px 40px; min-height: 80vh; }
@@ -474,4 +474,202 @@
       section { padding: 60px 20px; }
       section h2 { font-size: 2.2em; }
       .contact-info { grid-template-columns: 1fr; gap: 20px; }
-      .social-grid { grid-template-columns: 1fr; gap
+      .social-grid { grid-template-columns: 1fr; gap: 15px; }
+      .form-container { padding: 30px 20px; }
+      .nav-menu li a i { display: none; }
+    }
+    @media (max-width: 480px) {
+      .nav-menu { gap: 15px; }
+      .hero h1 { font-size: 2em; }
+      .hero .btn { padding: 12px 25px; font-size: 1em; }
+      .nav-cta .btn-cta { padding: 8px 16px; font-size: 0.9em; }
+      .contact-section { padding: 20px; }
+      .social-item { flex-direction: column; gap: 5px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <img src="../assets/logo-aci-uni.png" alt="ACI UNI Logo">
+        <span>CIDETIC 2025</span>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+        <li><a href="programa.html"><i class="fas fa-calendar-alt"></i> Programa</a></li>
+        <li><a href="ponentes.html"><i class="fas fa-users"></i> Ponentes</a></li>
+        <li><a href="inscripciones.html"><i class="fas fa-user-plus"></i> Inscripciones</a></li>
+        <li><a href="contacto.html" class="active"><i class="fas fa-envelope"></i> Contacto</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="inscripciones.html" class="btn-cta"><i class="fas fa-user-plus"></i> Regístrate</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Contáctanos</h1>
+    <p>¿Tienes preguntas sobre el CIDETIC 2025? Envíanos un mensaje y te responderemos lo antes posible.<br><strong>Estamos aquí para ayudarte en tu participación en el evento.</strong></p>
+    <a href="#contact-form" class="btn"><i class="fas fa-envelope"></i> Enviar Mensaje</a>
+  </section>
+
+  <!-- Sección de Información de Contacto -->
+  <section class="fade-in">
+    <h2>Información de Contacto</h2>
+    <p>Conéctate con nosotros para consultas, colaboraciones o para unirte a la comunidad ACI UNI en el contexto del CIDETIC 2025.</p>
+    <div class="contact-info">
+      <div class="contact-section fade-in">
+        <h3><i class="fas fa-envelope"></i> Email</h3>
+        <ul>
+          <li>
+            <strong>Email:</strong> <a href="mailto:aci@uni.edu.pe">aci@uni.edu.pe</a>
+          </li>
+        </ul>
+      </div>
+      <div class="contact-section fade-in">
+        <h3><i class="fas fa-map-marker-alt"></i> Ubicación</h3>
+        <ul>
+          <li>
+            <strong>Ubicación:</strong> Universidad Nacional de Ingeniería (UNI), Av. Túpac Amaru 210, Rímac, Lima, Perú
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de Redes Sociales -->
+  <section class="fade-in" style="background: var(--gris-claro);">
+    <h2>Síguenos en Redes Sociales</h2>
+    <p>Únete a nuestra comunidad en línea para actualizaciones, eventos y más sobre CIDETIC 2025 y ACI UNI.</p>
+    <div class="social-grid">
+      <div class="social-item fade-in">
+        <a href="https://www.instagram.com/aciuniperuoficial" target="_blank">
+          <i class="fab fa-instagram"></i>
+          <span>Instagram</span>
+        </a>
+      </div>
+      <div class="social-item fade-in">
+        <a href="https://www.tiktok.com/@aci.uni?_t=zs-901ajm08tiz&_r=1" target="_blank">
+          <i class="fab fa-tiktok"></i>
+          <span>TikTok</span>
+        </a>
+      </div>
+      <div class="social-item fade-in">
+        <a href="https://www.facebook.com/aciuniperu" target="_blank">
+          <i class="fab fa-facebook"></i>
+          <span>Facebook</span>
+        </a>
+      </div>
+      <div class="social-item fade-in">
+        <a href="https://www.linkedin.com/in/aci-uni-oficial-2651b1264/" target="_blank">
+          <i class="fab fa-linkedin"></i>
+          <span>LinkedIn</span>
+        </a>
+      </div>
+      <div class="social-item fade-in">
+        <a href="https://youtube.com/@aci_uni?si=UvlfLUo4jm9wJnpE" target="_blank">
+          <i class="fab fa-youtube"></i>
+          <span>YouTube</span>
+        </a>
+      </div>
+      <div class="social-item fade-in">
+        <a href="https://whatsapp.com/channel/0029VbBM55C17En53jwnJo1I" target="_blank">
+          <i class="fab fa-whatsapp"></i>
+          <span>WhatsApp Canal</span>
+        </a>
+      </div>
+      <div class="social-item fade-in">
+        <a href="https://www.atom.bio/aci_uni" target="_blank">
+          <i class="fas fa-link"></i>
+          <span>Atom Bio</span>
+        </a>
+      </div>
+      <div class="social-item fade-in">
+        <a href="https://x.com/aci_uni" target="_blank">
+          <i class="fab fa-x-twitter"></i>
+          <span>X (Twitter)</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Formulario de Contacto -->
+  <section id="contact-form" class="fade-in">
+    <h2>Envíanos un Mensaje</h2>
+    <p>Para consultas específicas sobre el CIDETIC 2025, completa el formulario a continuación. Responderemos en 24-48 horas.</p>
+    <div class="form-container">
+      <form id="contactForm">
+        <div class="form-group">
+          <label for="name">Nombre Completo *</label>
+          <input type="text" id="name" name="name" required placeholder="Ej: Juan Pérez">
+        </div>
+        <div class="form-group">
+          <label for="email">Correo Electrónico *</label>
+          <input type="email" id="email" name="email" required placeholder="Ej: juan@email.com">
+        </div>
+        <div class="form-group">
+          <label for="message">Mensaje *</label>
+          <textarea id="message" name="message" required placeholder="Describe tu consulta sobre CIDETIC 2025..."></textarea>
+        </div>
+        <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Enviar Mensaje</button>
+        <div id="successMessage" class="success-message">¡Mensaje enviado exitosamente! Te contactaremos pronto.</div>
+        <div id="errorMessage" class="error-message">Error al enviar. Intenta de nuevo o usa el email directo.</div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Capítulo Estudiantil ACI UNI. Todos los derechos reservados. | <a href="mailto:aci@uni.edu.pe">aci@uni.edu.pe</a></p>
+  </footer>
+
+  <script>
+    // Efecto scroll para navbar
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // Smooth scroll para enlaces internos
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // EmailJS para formulario de contacto
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = this.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+
+      emailjs.sendForm('TU_SERVICE_ID', 'TU_TEMPLATE_ID', this)
+        .then(function() {
+          document.getElementById('successMessage').classList.add('show');
+          document.getElementById('errorMessage').classList.remove('show');
+          this.reset();
+        }, function(error) {
+          console.log('Error:', error);
+          document.getElementById('errorMessage').classList.add('show');
+          document.getElementById('successMessage').classList.remove('show');
+        })
+        .finally(() => {
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar Mensaje';
+        });
+    });
+  </script>
+</body>
+</html>   
