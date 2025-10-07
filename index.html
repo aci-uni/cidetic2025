@@ -37,7 +37,7 @@
     }
     .fade-in { animation: fadeInUp 0.8s ease-out forwards; }
 
-    /* Navbar - Inspirada en el estilo de Foleon: logo izquierda, menú centrado/derecha, CTA, fondo semi-transparente que se solidifica al scroll */
+    /* Navbar */
     .navbar {
       position: fixed;
       top: 0;
@@ -148,12 +148,11 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 100px 20px 50px;
+      padding: 120px 20px 50px;
       background: linear-gradient(135deg, var(--azul-oscuro) 0%, var(--azul-medio) 50%, var(--azul-claro) 100%);
       color: var(--blanco);
       position: relative;
       overflow: hidden;
-      margin-top: 0; /* Ajuste para navbar fija */
     }
     .hero::before {
       content: '';
@@ -248,84 +247,42 @@
       opacity: 0.9;
     }
 
-    /* Programa resumido */
-    #program ul {
-      list-style: none; 
-      padding: 0; 
-      font-size: 1.1em; 
-      color: var(--azul-oscuro); 
-      max-width: 600px; 
-      margin: 0 auto; 
+    /* Teasers para otras páginas */
+    .teasers {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+    .teaser-card {
+      background: var(--blanco);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: var(--sombra-suave);
+      transition: all 0.3s ease;
       text-align: left;
     }
-    #program ul li {
-      padding: 15px 0;
-      border-left: 4px solid var(--celeste);
-      padding-left: 20px;
-      margin-bottom: 10px;
-      background: var(--blanco);
-      border-radius: 0 8px 8px 0;
-      box-shadow: var(--sombra-suave);
-      transition: all 0.3s ease;
-      position: relative;
-    }
-    #program ul li:hover {
-      transform: translateX(10px);
+    .teaser-card:hover {
+      transform: translateY(-5px);
       box-shadow: var(--sombra-hover);
     }
-    #program ul li strong { color: var(--azul-medio); }
-
-    /* Ponentes */
-    #speakers {
-      background: linear-gradient(135deg, var(--gris-claro), var(--blanco));
+    .teaser-card i {
+      font-size: 3em;
+      color: var(--celeste);
+      margin-bottom: 15px;
     }
-    .speakers { 
-      display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-      gap: 30px; 
-      margin-top: 50px; 
-    }
-    .speaker { 
-      background: var(--blanco); 
-      border-radius: 20px; 
-      padding: 30px 20px; 
-      transition: all 0.3s ease;
-      box-shadow: var(--sombra-suave);
-      position: relative;
-      overflow: hidden;
-    }
-    .speaker::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--celeste), var(--dorado));
-    }
-    .speaker:hover { 
-      transform: translateY(-10px);
-      box-shadow: var(--sombra-hover);
-    }
-    .speaker img { 
-      width: 120px; 
-      height: 120px; 
-      border-radius: 50%; 
-      margin-bottom: 20px; 
-      border: 4px solid var(--celeste);
-      transition: transform 0.3s ease;
-    }
-    .speaker:hover img { transform: scale(1.05); }
-    .speaker h3 { 
+    .teaser-card h3 {
       font-family: 'Montserrat', sans-serif;
-      margin-bottom: 10px; 
+      margin-bottom: 10px;
       color: var(--azul-oscuro);
-      font-size: 1.3em;
     }
-    .speaker p { 
-      font-size: 1em; 
-      color: var(--azul-medio);
-      opacity: 0.8;
+    .teaser-card a {
+      color: var(--celeste);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .teaser-card a:hover {
+      color: var(--dorado);
     }
 
     /* Footer */
@@ -356,25 +313,20 @@
       .nav-menu { gap: 20px; order: 2; }
       .nav-logo { order: 1; }
       .nav-cta { order: 3; }
-      .hero { padding: 120px 20px 40px; min-height: 80vh; } /* Ajuste para navbar en móvil */
+      .hero { padding: 120px 20px 40px; min-height: 80vh; }
       .hero h1 { font-size: 2.5em; }
       .hero p { font-size: 1.2em; }
       section { padding: 60px 20px; }
       section h2 { font-size: 2.2em; }
-      .speakers { grid-template-columns: 1fr; gap: 20px; }
-      #program ul li { padding: 12px 0; padding-left: 15px; font-size: 1em; }
+      .teasers { grid-template-columns: 1fr; gap: 20px; }
       .nav-menu { flex-wrap: wrap; justify-content: center; }
+      .nav-menu li a i { display: none; }
     }
     @media (max-width: 480px) {
       .nav-menu { gap: 15px; }
       .hero h1 { font-size: 2em; }
       .hero .btn { padding: 12px 25px; font-size: 1em; }
       .nav-cta .btn-cta { padding: 8px 16px; font-size: 0.9em; }
-    }
-
-    /* Ocultar iconos en navbar para pantallas muy pequeñas si es necesario */
-    @media (max-width: 768px) {
-      .nav-menu li a i { display: none; }
     }
   </style>
 </head>
@@ -384,14 +336,15 @@
   <nav class="navbar">
     <div class="nav-container">
       <div class="nav-logo">
-        <img src="../assets/logo-aci-uni.png" alt="ACI UNI Logo"> <!-- Usa el logo existente o reemplaza por uno del evento -->
+        <img src="../assets/logo-aci-uni.png" alt="ACI UNI Logo">
         <span>CIDETIC 2025</span>
       </div>
       <ul class="nav-menu">
-        <li><a href="#inicio" class="active"><i class="fas fa-home"></i> Inicio</a></li>
-        <li><a href="#programa"><i class="fas fa-calendar-alt"></i> Programa</a></li>
-        <li><a href="#ponentes"><i class="fas fa-users"></i> Ponentes</a></li>
-        <li><a href="#contacto"><i class="fas fa-envelope"></i> Contacto</a></li>
+        <li><a href="index.html" class="active"><i class="fas fa-home"></i> Inicio</a></li>
+        <li><a href="programa.html"><i class="fas fa-calendar-alt"></i> Programa</a></li>
+        <li><a href="ponentes.html"><i class="fas fa-users"></i> Ponentes</a></li>
+        <li><a href="inscripciones.html"><i class="fas fa-user-plus"></i> Inscripciones</a></li>
+        <li><a href="contacto.html"><i class="fas fa-envelope"></i> Contacto</a></li>
       </ul>
       <div class="nav-cta">
         <a href="inscripciones.html" class="btn-cta"><i class="fas fa-user-plus"></i> Regístrate</a>
@@ -400,7 +353,7 @@
   </nav>
 
   <!-- Hero -->
-  <section class="hero" id="inicio">
+  <section class="hero">
     <h1>CIDETIC 2025</h1>
     <p>Congreso de Innovación, Desarrollo y Tecnología en la Ingeniería Civil<br><strong>24 al 28 de noviembre | Lima, Perú</strong></p>
     <a href="inscripciones.html" class="btn"><i class="fas fa-arrow-right"></i> Regístrate ahora</a>
@@ -411,13 +364,53 @@
     <h2>Sobre el Evento</h2>
     <p>El CIDETIC 2025, organizado por el <strong>Student Chapter ACI UNI</strong>, reúne a investigadores, profesionales y estudiantes de ingeniería civil para compartir los últimos avances en innovación, desarrollo y tecnología aplicada a la construcción y gestión de infraestructuras.</p>
     <p>Los participantes disfrutarán de conferencias magistrales, talleres prácticos y espacios de networking con líderes del sector, fomentando colaboraciones que impulsen el futuro de la ingeniería civil en Perú y Latinoamérica.</p>
+    <div class="teasers">
+      <div class="teaser-card fade-in">
+        <i class="fas fa-calendar-alt"></i>
+        <h3>Programa Detallado</h3>
+        <p>Descubre el itinerario completo con conferencias, talleres y más.</p>
+        <a href="programa.html">Ver Programa <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="teaser-card fade-in">
+        <i class="fas fa-users"></i>
+        <h3>Ponentes Destacados</h3>
+        <p>Conoce a expertos internacionales en ingeniería civil.</p>
+        <a href="ponentes.html">Ver Ponentes <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="teaser-card fade-in">
+        <i class="fas fa-user-plus"></i>
+        <h3>Inscripciones Abiertas</h3>
+        <p>Únete ahora y asegura tu lugar en el evento.</p>
+        <a href="inscripciones.html">Inscribirse <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
   </section>
 
-  <!-- Programa resumido -->
-  <section id="programa">
-    <h2>Programa Resumido</h2>
-    <ul>
-      <li><strong>24 nov:</strong> Inauguración y conferencias magistrales sobre tendencias globales en infraestructura sostenible.</li>
-      <li><strong>25 nov:</strong> Talleres prácticos en modelado BIM y herramientas digitales para la construcción.</li>
-      <li><strong>26 nov:</strong> Paneles y debates sobre innovación en materiales y gestión de proyectos.</li>
-      <li><strong>27 nov:</strong> Conc
+  <!-- Footer -->
+  <footer>
+    Organizado por el <strong>Student Chapter ACI UNI</strong> | © 2025 Todos los derechos reservados | <a href="mailto:cidetic@aciuni.pe">cidetic@aciuni.pe</a>
+  </footer>
+
+  <script>
+    // Efecto scroll para navbar
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // Smooth scroll para enlaces internos (si aplica)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
