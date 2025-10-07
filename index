@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CIDETIC 2025 - Congreso de Innovación en Ingeniería Civil</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset básico */
+    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Inter', sans-serif; }
+    html { scroll-behavior: smooth; }
+
+    /* Colores */
+    :root {
+      --azul-oscuro: #0A1F44;
+      --azul-medio: #1E3A8A;
+      --celeste: #60A5FA;
+      --blanco: #FFFFFF;
+      --gris-claro: #F4F6F8;
+    }
+
+    body { color: var(--blanco); background-color: var(--azul-oscuro); }
+
+    /* Navbar */
+    nav {
+      position: fixed;
+      width: 100%;
+      background-color: rgba(10,31,68,0.9);
+      display: flex;
+      justify-content: center;
+      padding: 15px 0;
+      z-index: 1000;
+    }
+    nav ul { display: flex; gap: 30px; list-style: none; }
+    nav ul li a { color: var(--blanco); text-decoration: none; font-weight: 600; transition: 0.3s; }
+    nav ul li a:hover { color: var(--celeste); }
+
+    /* Secciones */
+    section { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 50px; }
+    .hero { flex-direction: column; text-align: center; background: var(--azul-oscuro); }
+    .hero h1 { font-size: 3em; margin-bottom: 20px; color: var(--celeste); }
+    .hero p { font-size: 1.3em; margin-bottom: 30px; }
+    .hero a { text-decoration: none; padding: 15px 30px; background: var(--azul-medio); color: var(--blanco); font-weight: 600; border-radius: 8px; transition: 0.3s; }
+    .hero a:hover { background: var(--celeste); color: var(--azul-oscuro); }
+
+    /* Secciones secundarias */
+    .content { max-width: 1000px; margin: 0 auto; text-align: center; }
+    .content h2 { font-size: 2.5em; margin-bottom: 20px; color: var(--celeste); }
+    .content p { font-size: 1.1em; line-height: 1.8; margin-bottom: 30px; }
+
+    /* Ponentes */
+    .speakers { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 40px; }
+    .speaker { background-color: var(--gris-claro); color: #0A1F44; border-radius: 10px; padding: 20px; transition: 0.3s; }
+    .speaker img { width: 100%; border-radius: 50%; margin-bottom: 15px; }
+    .speaker h3 { margin-bottom: 5px; }
+    .speaker p { font-size: 0.9em; }
+
+    /* Patrocinadores */
+    .sponsors { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; align-items: center; }
+    .sponsors img { max-width: 150px; filter: grayscale(100%); transition: 0.3s; }
+    .sponsors img:hover { filter: grayscale(0%); }
+
+    /* Botones */
+    .btn { display: inline-block; padding: 12px 25px; background: var(--azul-medio); color: var(--blanco); border-radius: 6px; font-weight: 600; text-decoration: none; transition: 0.3s; }
+    .btn:hover { background: var(--celeste); color: var(--azul-oscuro); }
+
+    /* Footer */
+    footer { background: var(--azul-medio); padding: 20px; text-align: center; font-size: 0.9em; color: var(--blanco); }
+
+    /* Responsive */
+    @media(max-width:768px) {
+      .hero h1 { font-size: 2.2em; }
+      .content h2 { font-size: 2em; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <ul>
+      <li><a href="#hero">Inicio</a></li>
+      <li><a href="#about">Sobre el Evento</a></li>
+      <li><a href="#program">Programa</a></li>
+      <li><a href="#speakers">Ponentes</a></li>
+      <li><a href="#sponsors">Patrocinadores</a></li>
+      <li><a href="#register">Inscripciones</a></li>
+      <li><a href="#contact">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section id="hero" class="hero">
+    <h1>CIDETIC 2025</h1>
+    <p>Congreso de Innovación, Desarrollo y Tecnología en la Ingeniería Civil<br>24 al 28 de noviembre | Lima, Perú</p>
+    <a href="#register" class="btn">Regístrate ahora</a>
+  </section>
+
+  <!-- Sobre el evento -->
+  <section id="about">
+    <div class="content">
+      <h2>Sobre el Evento</h2>
+      <p>El CIDETIC 2025 reúne a investigadores, profesionales y estudiantes de ingeniería civil para compartir los últimos avances en innovación, desarrollo y tecnología aplicada a la construcción y gestión de infraestructuras.</p>
+      <p>Los participantes disfrutarán de conferencias magistrales, talleres prácticos y espacios de networking con líderes del sector.</p>
+    </div>
+  </section>
+
+  <!-- Programa -->
+  <section id="program">
+    <div class="content">
+      <h2>Programa</h2>
+      <p>Del 24 al 28 de noviembre se desarrollarán conferencias, talleres, paneles y concursos técnicos. <br>Consulta el programa completo en breve.</p>
+    </div>
+  </section>
+
+  <!-- Ponentes -->
+  <section id="speakers">
+    <div class="content">
+      <h2>Ponentes Destacados</h2>
+      <div class="speakers">
+        <div class="speaker">
+          <img src="https://via.placeholder.com/200" alt="Ponente 1">
+          <h3>Ing. Ana Torres</h3>
+          <p>Especialista en Modelado BIM, España</p>
+        </div>
+        <div class="speaker">
+          <img src="https://via.placeholder.com/200" alt="Ponente 2">
+          <h3>Dr. Carlos Paredes</h3>
+          <p>Investigador en Materiales Inteligentes, Perú</p>
+        </div>
+        <!-- Agrega más ponentes aquí -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Patrocinadores -->
+  <section id="sponsors">
+    <div class="content">
+      <h2>Patrocinadores y Aliados</h2>
+      <div class="sponsors">
+        <img src="https://via.placeholder.com/150x80" alt="Patrocinador 1">
+        <img src="https://via.placeholder.com/150x80" alt="Patrocinador 2">
+        <img src="https://via.placeholder.com/150x80" alt="Patrocinador 3">
+        <!-- Agrega más logos aquí -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Inscripciones -->
+  <section id="register">
+    <div class="content">
+      <h2>Inscripciones</h2>
+      <p>Participa como estudiante, profesional o ponente. Plazas limitadas.</p>
+      <a href="#" class="btn">Registrarme</a>
+      <a href="#" class="btn">Enviar resumen técnico</a>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contact">
+    <div class="content">
+      <h2>Contacto</h2>
+      <p>Correo: info@cidetic2025.com</p>
+      <p>Síguenos en nuestras redes sociales para más información.</p>
+      <!-- Aquí podrías agregar formulario o links a redes -->
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    Organizado por la Facultad de Ingeniería Civil - UNI | © 2025 Todos los derechos reservados
+  </footer>
+
+</body>
+</html>
