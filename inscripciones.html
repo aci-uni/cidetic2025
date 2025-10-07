@@ -1,7 +1,528 @@
-<section>
-  <h2>Inscripciones</h2>
-  <p>Participa como estudiante, profesional o ponente. Plazas limitadas.</p>
-  <a href="#" class="btn">Registrarme</a>
-  <a href="#" class="btn">Enviar resumen técnico</a>
-</section>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscripciones - CIDETIC 2025 | Student Chapter ACI UNI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function() {
+      emailjs.init("TU_USER_ID_AQUI"); // Reemplaza con tu User ID de EmailJS
+    })();
+  </script>
+  <style>
+    :root {
+      --azul-oscuro: #0A1F44;
+      --azul-medio: #1E3A8A;
+      --azul-claro: #3B82F6;
+      --blanco: #FFFFFF;
+      --gris-claro: #F8FAFC;
+      --gris-medio: #E2E8F0;
+      --celeste: #60A5FA;
+      --dorado: #F59E0B;
+      --verde-whatsapp: #25D366;
+      --sombra-suave: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --sombra-hover: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
 
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { 
+      font-family: 'Inter', sans-serif; 
+      background: var(--blanco); 
+      color: var(--azul-oscuro); 
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Animaciones generales */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in { animation: fadeInUp 0.8s ease-out forwards; }
+
+    /* Navbar - Copia exacta, pero CTA ajustado a "Inscripción" */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(10, 31, 68, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 1000;
+      transition: all 0.3s ease;
+      padding: 10px 0;
+    }
+    .navbar.scrolled {
+      background: rgba(10, 31, 68, 0.98);
+      padding: 8px 0;
+      box-shadow: var(--sombra-suave);
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-logo img {
+      height: 40px;
+      width: auto;
+      transition: transform 0.3s ease;
+    }
+    .nav-logo:hover img { transform: scale(1.05); }
+    .nav-logo span {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.2em;
+      color: var(--blanco);
+    }
+    .nav-menu {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+      align-items: center;
+      margin: 0;
+      flex: 1;
+      justify-content: center;
+    }
+    .nav-menu li a { 
+      color: var(--blanco); 
+      text-decoration: none; 
+      font-weight: 600; 
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 0;
+    }
+    .nav-menu li a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--celeste), var(--dorado));
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+    .nav-menu li a:hover::after,
+    .nav-menu li a.active::after { 
+      width: 100%; 
+    }
+    .nav-menu li a:hover { color: var(--celeste); }
+    .nav-menu li a.active { color: var(--celeste); }
+    .nav-cta {
+      display: flex;
+      align-items: center;
+    }
+    .nav-cta .btn-cta {
+      text-decoration: none;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, var(--celeste), var(--dorado));
+      color: var(--blanco);
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 0.95em;
+      transition: all 0.3s ease;
+      box-shadow: var(--sombra-suave);
+      white-space: nowrap;
+    }
+    .nav-cta .btn-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--sombra-hover);
+      color: var(--blanco);
+    }
+
+    /* Hero - Más directo, sin redundancia */
+    .hero {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 20px 50px;
+      background: linear-gradient(135deg, var(--azul-oscuro) 0%, var(--azul-medio) 50%, var(--azul-claro) 100%);
+      color: var(--blanco);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
+      opacity: 0.05;
+    }
+    .hero h1 { 
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3.5em; 
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      animation: fadeInUp 1s ease-out;
+    }
+    .hero p { 
+      font-size: 1.3em; 
+      margin-bottom: 40px; 
+      max-width: 700px;
+      opacity: 0.95;
+      animation: fadeInUp 1s ease-out 0.2s both;
+    }
+
+    /* Formulario - Sección principal */
+    .form-section {
+      background: var(--blanco);
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .form-section h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.8em;
+      margin-bottom: 30px;
+      color: var(--azul-oscuro);
+      position: relative;
+    }
+    .form-section h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--celeste), var(--dorado));
+      margin: 10px auto;
+      border-radius: 2px;
+    }
+    .form-container {
+      max-width: 500px;
+      margin: 0 auto;
+      background: var(--gris-claro);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: var(--sombra-suave);
+      animation: fadeInUp 1s ease-out 0.4s both;
+    }
+    .form-group {
+      margin-bottom: 25px;
+      text-align: left;
+    }
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--azul-oscuro);
+      font-size: 1em;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid var(--gris-medio);
+      border-radius: 10px;
+      font-size: 1em;
+      transition: all 0.3s ease;
+      background: var(--blanco);
+    }
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--celeste);
+      box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+    }
+    .form-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .btn {
+      text-decoration: none;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1em;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      border: none;
+      min-width: 200px;
+      justify-content: center;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--celeste), var(--dorado));
+      color: var(--blanco);
+      box-shadow: var(--sombra-suave);
+    }
+    .btn-primary:hover:not(:disabled) {
+      transform: translateY(-3px);
+      box-shadow: var(--sombra-hover);
+      color: var(--blanco);
+    }
+    .btn-whatsapp {
+      background: var(--verde-whatsapp);
+      color: var(--blanco);
+      box-shadow: var(--sombra-suave);
+      text-decoration: none;
+    }
+    .btn-whatsapp:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--sombra-hover);
+      color: var(--blanco);
+      background: #128C7E;
+    }
+    .btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+    .success-message,
+    .error-message {
+      display: none;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 20px;
+      font-weight: 600;
+    }
+    .success-message {
+      background: #D4EDDA;
+      color: #155724;
+      border: 1px solid #C3E6CB;
+    }
+    .error-message {
+      background: #F8D7DA;
+      color: #721C24;
+      border: 1px solid #F5C6CB;
+    }
+    .show { display: block; }
+
+    /* Beneficios (opcional, teaser) */
+    .benefits {
+      padding: 80px 20px;
+      background: var(--gris-claro);
+      text-align: center;
+    }
+    .benefits h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5em;
+      margin-bottom: 40px;
+      color: var(--azul-oscuro);
+    }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .benefit-item {
+      background: var(--blanco);
+      padding: 30px 20px;
+      border-radius: 15px;
+      box-shadow: var(--sombra-suave);
+      transition: all 0.3s ease;
+    }
+    .benefit-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--sombra-hover);
+    }
+    .benefit-item i {
+      font-size: 2.5em;
+      color: var(--celeste);
+      margin-bottom: 15px;
+    }
+    .benefit-item h3 {
+      font-family: 'Montserrat', sans-serif;
+      margin-bottom: 10px;
+      color: var(--azul-oscuro);
+    }
+
+    /* Footer - Copia exacta */
+    footer { 
+      background: linear-gradient(135deg, var(--azul-oscuro), var(--azul-medio)); 
+      color: var(--blanco); 
+      text-align: center; 
+      padding: 40px 20px; 
+      font-size: 1em;
+      position: relative;
+    }
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--celeste), var(--dorado));
+    }
+    footer strong { color: var(--celeste); }
+    footer a { color: var(--celeste); text-decoration: none; transition: color 0.3s; }
+    footer a:hover { color: var(--dorado); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-container { padding: 0 15px; flex-direction: column; gap: 10px; }
+      .nav-menu { gap: 20px; order: 2; }
+      .nav-logo { order: 1; }
+      .nav-cta { order: 3; }
+      .hero { padding: 120px 20px 40px; min-height: 70vh; }
+      .hero h1 { font-size: 2.5em; }
+      .hero p { font-size: 1.1em; }
+      .form-container { padding: 30px 20px; }
+      .form-buttons { flex-direction: column; }
+      .btn { min-width: auto; width: 100%; }
+      .benefits-grid { grid-template-columns: 1fr; gap: 20px; }
+      .nav-menu { flex-wrap: wrap; justify-content: center; }
+      .nav-menu li a i { display: none; }
+    }
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2em; }
+      .form-section { padding: 60px 15px; }
+      .benefits { padding: 60px 15px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <img src="../assets/logo-aci-uni.png" alt="ACI UNI Logo">
+        <span>CIDETIC 2025</span>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+        <li><a href="programa.html"><i class="fas fa-calendar-alt"></i> Programa</a></li>
+        <li><a href="ponentes.html"><i class="fas fa-users"></i> Ponentes</a></li>
+        <li><a href="inscripciones.html" class="active"><i class="fas fa-user-plus"></i> Inscripciones</a></li>
+        <li><a href="contacto.html"><i class="fas fa-envelope"></i> Contacto</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="#form" class="btn-cta"><i class="fas fa-edit"></i> Inscripción</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Completa tu Inscripción</h1>
+    <p>Regístrate rápidamente para unirte al CIDETIC 2025. Recibirás confirmación por email y acceso al grupo de WhatsApp oficial.<br><strong>¡Cupos limitados! Evento del 24-28 noviembre en Lima.</strong></p>
+  </section>
+
+  <!-- Formulario de inscripción -->
+  <section class="form-section" id="form">
+    <h2>Registro Simple</h2>
+    <p>Ingresa tus datos para confirmar tu participación. El proceso es gratuito y toma menos de 1 minuto.</p>
+    <div class="form-container">
+      <form id="inscriptionForm">
+        <div class="form-group">
+          <label for="name">Nombre Completo *</label>
+          <input type="text" id="name" name="name" required placeholder="Ej: Juan Pérez García">
+        </div>
+        <div class="form-group">
+          <label for="email">Correo Electrónico *</label>
+          <input type="email" id="email" name="email" required placeholder="Ej: juan.perez@email.com">
+        </div>
+        <div class="form-buttons">
+          <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Enviar Inscripción</button>
+          <a href="https://wa.me/51999999999?text=Hola%2C%20me%20interesa%20unirme%20al%20grupo%20de%20WhatsApp%20para%20CIDETIC%202025" class="btn btn-whatsapp" target="_blank">
+            <i class="fab fa-whatsapp"></i> Unirse a WhatsApp
+          </a>
+        </div>
+        <div id="successMessage" class="success-message">¡Inscripción enviada exitosamente! Revisa tu email para confirmación.</div>
+        <div id="errorMessage" class="error-message">Error al enviar. Intenta de nuevo o contacta por email.</div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Beneficios (teaser breve) -->
+  <section class="benefits">
+    <h2>Beneficios de Inscribirte</h2>
+    <div class="benefits-grid">
+      <div class="benefit-item fade-in">
+        <i class="fas fa-certificate"></i>
+        <h3>Certificado Oficial</h3>
+        <p>Recibe un certificado de participación avalado por ACI UNI.</p>
+      </div>
+      <div class="benefit-item fade-in">
+        <i class="fas fa-users"></i>
+        <h3>Networking</h3>
+        <p>Conecta con profesionales y estudiantes de toda Latinoamérica.</p>
+      </div>
+      <div class="benefit-item fade-in">
+        <i class="fas fa-laptop"></i>
+        <h3>Acceso Digital</h3>
+        <p>Materiales, grabaciones y actualizaciones exclusivas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    Organizado por el <strong>Student Chapter ACI UNI</strong> | © 2025 Todos los derechos reservados | <a href="mailto:cidetic@aciuni.pe">cidetic@aciuni.pe</a>
+  </footer>
+
+  <script>
+    // Efecto scroll para navbar
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // Smooth scroll para enlaces internos
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // EmailJS para formulario de inscripción
+    document.getElementById('inscriptionForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = this.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+
+      emailjs.sendForm('TU_SERVICE_ID', 'TU_TEMPLATE_ID', this)
+        .then(function() {
+          document.getElementById('successMessage').classList.add('show');
+          document.getElementById('errorMessage').classList.remove('show');
+          this.reset();
+        }, function(error) {
+          console.log('Error:', error);
+          document.getElementById('errorMessage').classList.add('show');
+          document.getElementById('successMessage').classList.remove('show');
+        })
+        .finally(() => {
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar Inscripción';
+        });
+    });
+  </script>
+</body>
+</html>
