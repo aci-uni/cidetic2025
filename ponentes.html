@@ -3,160 +3,445 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ponentes | CIDETIC 2025</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>Ponentes - CIDETIC 2025 | Student Chapter ACI UNI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   <style>
+    /* [Copia todos los estilos CSS de index.html/programa.html para consistencia: :root, *, html, body, animaciones, navbar, hero, sections, footer, responsive] */
     :root {
       --azul-oscuro: #0A1F44;
+      --azul-medio: #1E3A8A;
+      --azul-claro: #3B82F6;
       --blanco: #FFFFFF;
+      --gris-claro: #F8FAFC;
+      --gris-medio: #E2E8F0;
       --celeste: #60A5FA;
-      --gris-claro: #F4F6F8;
+      --dorado: #F59E0B;
+      --sombra-suave: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --sombra-hover: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     }
 
-    * { margin:0; padding:0; box-sizing:border-box; font-family: 'Inter', sans-serif; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { background: var(--blanco); color: var(--azul-oscuro); }
-
-    /* Navbar (igual que index) */
-    nav {
-      position: fixed;
-      width: 100%;
-      background: var(--azul-oscuro);
-      display: flex;
-      justify-content: center;
-      padding: 15px 0;
-      z-index: 1000;
+    body { 
+      font-family: 'Inter', sans-serif; 
+      background: var(--blanco); 
+      color: var(--azul-oscuro); 
+      line-height: 1.6;
+      overflow-x: hidden;
     }
-    nav ul { display: flex; gap: 30px; list-style: none; }
-    nav ul li a { color: var(--blanco); text-decoration: none; font-weight: 600; transition: 0.3s; }
-    nav ul li a:hover { color: var(--celeste); }
-    nav ul li a.active { color: var(--celeste); }
+
+    /* Animaciones generales */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in { animation: fadeInUp 0.8s ease-out forwards; }
+
+    /* Navbar - Copia exacta */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(10, 31, 68, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 1000;
+      transition: all 0.3s ease;
+      padding: 10px 0;
+    }
+    .navbar.scrolled {
+      background: rgba(10, 31, 68, 0.98);
+      padding: 8px 0;
+      box-shadow: var(--sombra-suave);
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-logo img {
+      height: 40px;
+      width: auto;
+      transition: transform 0.3s ease;
+    }
+    .nav-logo:hover img { transform: scale(1.05); }
+    .nav-logo span {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.2em;
+      color: var(--blanco);
+    }
+    .nav-menu {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+      align-items: center;
+      margin: 0;
+      flex: 1;
+      justify-content: center;
+    }
+    .nav-menu li a { 
+      color: var(--blanco); 
+      text-decoration: none; 
+      font-weight: 600; 
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 0;
+    }
+    .nav-menu li a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--celeste), var(--dorado));
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+    .nav-menu li a:hover::after,
+    .nav-menu li a.active::after { 
+      width: 100%; 
+    }
+    .nav-menu li a:hover { color: var(--celeste); }
+    .nav-menu li a.active { color: var(--celeste); }
+    .nav-cta {
+      display: flex;
+      align-items: center;
+    }
+    .nav-cta .btn-cta {
+      text-decoration: none;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, var(--celeste), var(--dorado));
+      color: var(--blanco);
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 0.95em;
+      transition: all 0.3s ease;
+      box-shadow: var(--sombra-suave);
+      white-space: nowrap;
+    }
+    .nav-cta .btn-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--sombra-hover);
+      color: var(--blanco);
+    }
 
     /* Hero */
-    .hero-small {
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      padding: 8rem 3rem 4rem;
-      background: linear-gradient(120deg, var(--azul-oscuro), var(--celeste));
-      color: #fff;
-      margin-top: 0;
-    }
-    .hero-small h1 { font-size: 2.8rem; margin-bottom: 15px; }
-    .hero-small p { font-size: 1.1rem; }
-
-    /* Sección Ponentes */
-    main { max-width: 1100px; margin: 3rem auto; padding: 0 20px; }
-    h2 { font-size: 2.5rem; margin-bottom: 1.5rem; color: var(--azul-oscuro); text-align: center; }
-
-    .speakers-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-      margin-top: 20px;
-    }
-
-    .speaker-card {
-      background: var(--gris-claro);
-      border-radius: 12px;
+      padding: 120px 20px 50px;
+      background: linear-gradient(135deg, var(--azul-oscuro) 0%, var(--azul-medio) 50%, var(--azul-claro) 100%);
+      color: var(--blanco);
+      position: relative;
       overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-
-    .speaker-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
+      opacity: 0.05;
     }
-
-    .speaker-card img {
+    .hero h1 { 
+      font-family: 'Montserrat', sans-serif;
+      font-size: 4em; 
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      animation: fadeInUp 1s ease-out;
+    }
+    .hero p { 
+      font-size: 1.4em; 
+      margin-bottom: 40px; 
+      max-width: 800px;
+      opacity: 0.95;
+      animation: fadeInUp 1s ease-out 0.2s both;
+    }
+    .hero .btn { 
+      text-decoration: none; 
+      padding: 15px 35px; 
+      background: linear-gradient(135deg, var(--celeste), var(--dorado));
+      color: var(--blanco); 
+      border-radius: 50px; 
+      font-weight: 700; 
+      font-size: 1.1em;
+      transition: all 0.3s ease;
+      box-shadow: var(--sombra-suave);
+      animation: fadeInUp 1s ease-out 0.4s both;
+      position: relative;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .hero .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
       width: 100%;
-      height: 180px; /* alto fijo tipo post */
-      object-fit: cover;
-      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+    .hero .btn:hover::before { left: 100%; }
+    .hero .btn:hover { 
+      transform: translateY(-3px);
+      box-shadow: var(--sombra-hover);
+      color: var(--blanco);
     }
 
-    .speaker-card .info {
-      padding: 15px;
+    /* Secciones generales */
+    section { 
+      padding: 100px 20px; 
+      max-width: 1200px; 
+      margin: 0 auto; 
+      text-align: center; 
+    }
+    section:nth-child(even) { background: var(--gris-claro); }
+    section h2 { 
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.8em; 
+      margin-bottom: 30px; 
+      color: var(--azul-oscuro);
+      position: relative;
+    }
+    section h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--celeste), var(--dorado));
+      margin: 10px auto;
+      border-radius: 2px;
+    }
+    section p { 
+      font-size: 1.2em; 
+      line-height: 1.8; 
+      margin-bottom: 30px; 
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      opacity: 0.9;
+    }
+
+    /* Grid de Ponentes */
+    .speakers { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+      gap: 40px; 
+      margin-top: 50px; 
+    }
+    .speaker { 
+      background: var(--blanco); 
+      border-radius: 20px; 
+      padding: 30px; 
+      transition: all 0.3s ease;
+      box-shadow: var(--sombra-suave);
+      position: relative;
+      overflow: hidden;
+      text-align: left;
+    }
+    .speaker::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--celeste), var(--dorado));
+    }
+    .speaker:hover { 
+      transform: translateY(-10px);
+      box-shadow: var(--sombra-hover);
+    }
+    .speaker img { 
+      width: 140px; 
+      height: 140px; 
+      border-radius: 50%; 
+      margin-bottom: 20px; 
+      border: 4px solid var(--celeste);
+      transition: transform 0.3s ease;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .speaker:hover img { transform: scale(1.05); }
+    .speaker h3 { 
+      font-family: 'Montserrat', sans-serif;
+      margin-bottom: 10px; 
+      color: var(--azul-oscuro);
+      font-size: 1.4em;
       text-align: center;
     }
-
-    .speaker-card h3 {
-      font-size: 1.2rem;
-      margin-bottom: 5px;
-      color: var(--azul-oscuro);
+    .speaker p { 
+      font-size: 1em; 
+      color: var(--azul-medio);
+      opacity: 0.8;
+      text-align: center;
+    }
+    .speaker .social-links {
+      margin-top: 15px;
+      text-align: center;
+    }
+    .speaker .social-links a {
+      color: var(--celeste);
+      font-size: 1.2em;
+      margin: 0 10px;
+      transition: color 0.3s ease;
+    }
+    .speaker .social-links a:hover {
+      color: var(--dorado);
     }
 
-    .speaker-card p {
-      font-size: 0.95rem;
-      color: #334155;
+    /* Footer - Copia exacta */
+    footer { 
+      background: linear-gradient(135deg, var(--azul-oscuro), var(--azul-medio)); 
+      color: var(--blanco); 
+      text-align: center; 
+      padding: 40px 20px; 
+      font-size: 1em;
+      position: relative;
     }
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--celeste), var(--dorado));
+    }
+    footer strong { color: var(--celeste); }
+    footer a { color: var(--celeste); text-decoration: none; transition: color 0.3s; }
+    footer a:hover { color: var(--dorado); }
 
-    /* Footer */
-    footer { background: var(--azul-oscuro); color: var(--blanco); text-align: center; padding: 25px; font-size: 0.95em; margin-top: 3rem; }
-
-    @media(max-width:768px){
-      .hero-small h1 { font-size: 2.2rem; }
-      h2 { font-size: 2rem; }
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-container { padding: 0 15px; flex-direction: column; gap: 10px; }
+      .nav-menu { gap: 20px; order: 2; }
+      .nav-logo { order: 1; }
+      .nav-cta { order: 3; }
+      .hero { padding: 120px 20px 40px; min-height: 80vh; }
+      .hero h1 { font-size: 2.5em; }
+      .hero p { font-size: 1.2em; }
+      section { padding: 60px 20px; }
+      section h2 { font-size: 2.2em; }
+      .speakers { grid-template-columns: 1fr; gap: 20px; }
+      .nav-menu { flex-wrap: wrap; justify-content: center; }
+      .nav-menu li a i { display: none; }
+    }
+    @media (max-width: 480px) {
+      .nav-menu { gap: 15px; }
+      .hero h1 { font-size: 2em; }
+      .hero .btn { padding: 12px 25px; font-size: 1em; }
+      .nav-cta .btn-cta { padding: 8px 16px; font-size: 0.9em; }
     }
   </style>
 </head>
 <body>
 
   <!-- Navbar -->
-  <nav>
-    <ul>
-      <li><a href="index.html">Inicio</a></li>
-      <li><a href="programa.html">Programa</a></li>
-      <li><a href="ponentes.html" class="active">Ponentes</a></li>
-      <li><a href="inscripciones.html">Inscripciones</a></li>
-      <li><a href="contacto.html">Contacto</a></li>
-    </ul>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <img src="../assets/logo-aci-uni.png" alt="ACI UNI Logo">
+        <span>CIDETIC 2025</span>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+        <li><a href="programa.html"><i class="fas fa-calendar-alt"></i> Programa</a></li>
+        <li><a href="ponentes.html" class="active"><i class="fas fa-users"></i> Ponentes</a></li>
+        <li><a href="inscripciones.html"><i class="fas fa-user-plus"></i> Inscripciones</a></li>
+        <li><a href="contacto.html"><i class="fas fa-envelope"></i> Contacto</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="inscripciones.html" class="btn-cta"><i class="fas fa-user-plus"></i> Regístrate</a>
+      </div>
+    </div>
   </nav>
 
   <!-- Hero -->
-  <section class="hero-small">
+  <section class="hero">
     <h1>Ponentes Destacados</h1>
-    <p>Conoce a los expertos que compartirán su conocimiento en CIDETIC 2025</p>
+    <p>Expertos internacionales y locales compartirán su conocimiento en innovación y tecnología aplicada a la ingeniería civil.<br><strong>¡No te pierdas sus conferencias!</strong></p>
+    <a href="inscripciones.html" class="btn"><i class="fas fa-user-plus"></i> Inscríbete para Escucharlos</a>
   </section>
 
-  <!-- Ponentes -->
-  <main>
-    <h2>Nuestros Ponentes</h2>
-    <div class="speakers-grid">
-      <div class="speaker-card">
+  <!-- Sección de Ponentes -->
+  <section id="speakers" class="fade-in">
+    <h2>Conoce a Nuestros Ponentes</h2>
+    <p>Seleccionados por su experiencia y contribuciones al campo de la ingeniería civil.</p>
+    <div class="speakers">
+      <div class="speaker fade-in">
         <img src="images/ponentes/ana-torres.jpg" alt="Ana Torres">
-        <div class="info">
-          <h3>Ing. Ana Torres</h3>
-          <p>Especialista en Modelado BIM, España</p>
+        <h3>Ing. Ana Torres</h3>
+        <p>Especialista en Modelado BIM, España<br>Más de 15 años en proyectos internacionales de construcción digital.</p>
+        <div class="social-links">
+          <a href="https://linkedin.com/in/ana-torres" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="mailto:ana.torres@email.com"><i class="fas fa-envelope"></i></a>
         </div>
       </div>
-      <div class="speaker-card">
+      <div class="speaker fade-in">
         <img src="images/ponentes/carlos-paredes.jpg" alt="Carlos Paredes">
-        <div class="info">
-          <h3>Dr. Carlos Paredes</h3>
-          <p>Investigador en Materiales Inteligentes, Perú</p>
+        <h3>Dr. Carlos Paredes</h3>
+        <p>Investigador en Materiales Inteligentes, Perú<br>Autor de publicaciones en journals de impacto sobre sostenibilidad.</p>
+        <div class="social-links">
+          <a href="https://linkedin.com/in/carlos-paredes" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="mailto:carlos.paredes@email.com"><i class="fas fa-envelope"></i></a>
         </div>
       </div>
-      <div class="speaker-card">
-        <img src="images/ponentes/maria-gomez.jpg" alt="María Gómez">
-        <div class="info">
-          <h3>Ing. María Gómez</h3>
-          <p>Gestión de Proyectos de Construcción, Chile</p>
+      <div class="speaker fade-in">
+        <img src="images/ponentes/maria-lopez.jpg" alt="María López">
+        <h3>Ing. María López</h3>
+        <p>Experta en Gestión de Proyectos, México<br>Líder en infraestructuras resilientes ante desastres naturales.</p>
+        <div class="social-links">
+          <a href="https://linkedin.com/in/maria-lopez" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="mailto:maria.lopez@email.com"><i class="fas fa-envelope"></i></a>
         </div>
       </div>
-      <div class="speaker-card">
-        <img src="images/ponentes/juan-lopez.jpg" alt="Juan López">
-        <div class="info">
-          <h3>Dr. Juan López</h3>
-          <p>Infraestructura Sostenible, México</p>
-        </div>
-      </div>
+      <!-- Agrega más ponentes aquí si es necesario -->
     </div>
-  </main>
+  </section>
 
   <!-- Footer -->
   <footer>
-    Organizado por el <strong>Student Chapter ACI UNI</strong> | © 2025 Todos los derechos reservados
+    Organizado por el <strong>Student Chapter ACI UNI</strong> | © 2025 Todos los derechos reservados | <a href="mailto:cidetic@aciuni.pe">cidetic@aciuni.pe</a>
   </footer>
 
+  <script>
+    // Efecto scroll para navbar
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+  </script>
 </body>
 </html>
-
