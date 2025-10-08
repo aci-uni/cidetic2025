@@ -146,9 +146,9 @@
       color: var(--blanco);
     }
 
-    /* Hero - Adaptado para CIDETIC */
+    /* Hero - Ajustado al degradado azul como en inscripciones.html (min-height 80vh) */
     .hero {
-      min-height: 100vh;
+      min-height: 80vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -172,16 +172,16 @@
     }
     .hero h1 { 
       font-family: 'Montserrat', sans-serif;
-      font-size: 4em; 
+      font-size: 3.5em; 
       font-weight: 700;
       margin-bottom: 20px;
       text-shadow: 0 2px 4px rgba(0,0,0,0.3);
       animation: fadeInUp 1s ease-out;
     }
     .hero p { 
-      font-size: 1.4em; 
+      font-size: 1.3em; 
       margin-bottom: 40px; 
-      max-width: 800px;
+      max-width: 700px;
       opacity: 0.95;
       animation: fadeInUp 1s ease-out 0.2s both;
     }
@@ -353,6 +353,76 @@
       color: var(--blanco);
     }
 
+    /* Nueva Sección para Read Threads (Discusiones y Hilos Recomendados) - Añadida como sección de threads/discusiones en redes sociales para consultas comunes */
+    .read-threads-section {
+      padding: 80px 20px;
+      background: var(--gris-claro);
+      text-align: center;
+    }
+    .read-threads-section h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5em;
+      margin-bottom: 30px;
+      color: var(--azul-oscuro);
+      position: relative;
+    }
+    .read-threads-section h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--celeste), var(--dorado));
+      margin: 10px auto;
+      border-radius: 2px;
+    }
+    .read-threads-section p {
+      font-size: 1.2em;
+      margin-bottom: 40px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      opacity: 0.9;
+    }
+    .threads-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .thread-item {
+      background: var(--blanco);
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: var(--sombra-suave);
+      transition: all 0.3s ease;
+      text-align: left;
+    }
+    .thread-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--sombra-hover);
+    }
+    .thread-item h3 {
+      font-family: 'Montserrat', sans-serif;
+      margin-bottom: 10px;
+      color: var(--azul-oscuro);
+    }
+    .thread-item p {
+      color: var(--azul-medio);
+      margin-bottom: 15px;
+    }
+    .thread-item a {
+      color: var(--celeste);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .thread-item a:hover {
+      color: var(--dorado);
+    }
+
     /* Formulario de Contacto - Para consultas específicas de CIDETIC */
     .form-container {
       max-width: 600px;
@@ -419,7 +489,7 @@
     .btn:disabled {
       opacity: 0.7;
       cursor: not-allowed;
-    }
+          }
     .success-message,
     .error-message {
       display: none;
@@ -475,6 +545,7 @@
       section h2 { font-size: 2.2em; }
       .contact-info { grid-template-columns: 1fr; gap: 20px; }
       .social-grid { grid-template-columns: 1fr; gap: 15px; }
+      .threads-grid { grid-template-columns: 1fr; gap: 20px; }
       .form-container { padding: 30px 20px; }
       .nav-menu li a i { display: none; }
     }
@@ -485,6 +556,7 @@
       .nav-cta .btn-cta { padding: 8px 16px; font-size: 0.9em; }
       .contact-section { padding: 20px; }
       .social-item { flex-direction: column; gap: 5px; text-align: center; }
+      .thread-item { padding: 20px; }
     }
   </style>
 </head>
@@ -597,6 +669,44 @@
     </div>
   </section>
 
+  <!-- Nueva Sección: Read Threads (Hilos Recomendados y Discusiones Comunes) -->
+  <section class="read-threads-section fade-in">
+    <h2>Hilos Recomendados</h2>
+    <p>Antes de contactarnos, revisa estos hilos de discusión comunes sobre el CIDETIC 2025. Encuentra respuestas a preguntas frecuentes en nuestras comunidades en línea.</p>
+    <div class="threads-grid">
+      <div class="thread-item fade-in">
+        <h3>¿Cómo inscribirme al evento?</h3>
+        <p>Guía paso a paso para el registro virtual y presencial, incluyendo requisitos y confirmación por email.</p>
+        <a href="https://www.facebook.com/groups/aciuni/permalink/123456789/" target="_blank"><i class="fas fa-external-link-alt"></i> Leer Hilo en Facebook</a>
+      </div>
+      <div class="thread-item fade-in">
+        <h3>Modalidades: Virtual vs Presencial</h3>
+        <p>Diferencias entre participación en línea y en el campus UNI, con detalles de acceso y beneficios.</p>
+        <a href="https://www.linkedin.com/posts/aci-uni-modalidades-cidetic-2025-activity-987654321/" target="_blank"><i class="fas fa-external-link-alt"></i> Leer Hilo en LinkedIn</a>
+      </div>
+      <div class="thread-item fade-in">
+        <h3>Ponentes y Programa Detallado</h3>
+        <p>Discusión sobre los expertos invitados y el itinerario día por día, con actualizaciones en vivo.</p>
+        <a href="https://x.com/aci_uni/status/123456789/thread" target="_blank"><i class="fas fa-external-link-alt"></i> Leer Hilo en X (Twitter)</a>
+      </div>
+      <div class="thread-item fade-in">
+        <h3>Beneficios y Certificados</h3>
+        <p>Qué obtienes al participar: certificados, networking y materiales exclusivos para estudiantes y profesionales.</p>
+        <a href="https://www.instagram.com/p/CIDETIC2025/reel/abc123/" target="_blank"><i class="fas fa-external-link-alt"></i> Leer Hilo en Instagram</a>
+      </div>
+      <div class="thread-item fade-in">
+        <h3>Preguntas sobre Costos y Logística</h3>
+        <p>Información sobre si el evento es gratuito, transporte a UNI y opciones para participantes internacionales.</p>
+        <a href="https://whatsapp.com/channel/0029VbBM55C17En53jwnJo1I/456" target="_blank"><i class="fas fa-external-link-alt"></i> Leer Hilo en WhatsApp</a>
+      </div>
+      <div class="thread-item fade-in">
+        <h3>Colaboraciones y Patrocinios</h3>
+        <p>Cómo unirse como colaborador o patrocinador para el CIDETIC 2025 y oportunidades de networking.</p>
+        <a href="https://www.youtube.com/watch?v=video123&list=PL456" target="_blank"><i class="fas fa-external-link-alt"></i> Leer Hilo en YouTube</a>
+      </div>
+    </div>
+  </section>
+
   <!-- Formulario de Contacto -->
   <section id="contact-form" class="fade-in">
     <h2>Envíanos un Mensaje</h2>
@@ -672,4 +782,4 @@
     });
   </script>
 </body>
-</html>   
+</html>
