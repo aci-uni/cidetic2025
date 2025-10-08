@@ -310,7 +310,7 @@
       color: var(--dorado);
     }
 
-    /* Redes Sociales - Grid adaptado del referencia */
+    /* Redes Sociales - Grid adaptado del referencia, con Threads añadido */
     .social-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -351,76 +351,6 @@
     }
     .social-item:hover a {
       color: var(--blanco);
-    }
-
-    /* Nueva Sección para Read Threads (Discusiones y Hilos Recomendados) - Añadida como sección de threads/discusiones en redes sociales para consultas comunes */
-    .read-threads-section {
-      padding: 80px 20px;
-      background: var(--gris-claro);
-      text-align: center;
-    }
-    .read-threads-section h2 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2.5em;
-      margin-bottom: 30px;
-      color: var(--azul-oscuro);
-      position: relative;
-    }
-    .read-threads-section h2::after {
-      content: '';
-      display: block;
-      width: 60px;
-      height: 4px;
-      background: linear-gradient(90deg, var(--celeste), var(--dorado));
-      margin: 10px auto;
-      border-radius: 2px;
-    }
-    .read-threads-section p {
-      font-size: 1.2em;
-      margin-bottom: 40px;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-      opacity: 0.9;
-    }
-    .threads-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    .thread-item {
-      background: var(--blanco);
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: var(--sombra-suave);
-      transition: all 0.3s ease;
-      text-align: left;
-    }
-    .thread-item:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--sombra-hover);
-    }
-    .thread-item h3 {
-      font-family: 'Montserrat', sans-serif;
-      margin-bottom: 10px;
-      color: var(--azul-oscuro);
-    }
-    .thread-item p {
-      color: var(--azul-medio);
-      margin-bottom: 15px;
-    }
-    .thread-item a {
-      color: var(--celeste);
-      text-decoration: none;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    }
-    .thread-item a:hover {
-      color: var(--dorado);
     }
 
     /* Formulario de Contacto - Para consultas específicas de CIDETIC */
@@ -489,7 +419,7 @@
     .btn:disabled {
       opacity: 0.7;
       cursor: not-allowed;
-          }
+    }
     .success-message,
     .error-message {
       display: none;
@@ -545,7 +475,6 @@
       section h2 { font-size: 2.2em; }
       .contact-info { grid-template-columns: 1fr; gap: 20px; }
       .social-grid { grid-template-columns: 1fr; gap: 15px; }
-      .threads-grid { grid-template-columns: 1fr; gap: 20px; }
       .form-container { padding: 30px 20px; }
       .nav-menu li a i { display: none; }
     }
@@ -556,7 +485,6 @@
       .nav-cta .btn-cta { padding: 8px 16px; font-size: 0.9em; }
       .contact-section { padding: 20px; }
       .social-item { flex-direction: column; gap: 5px; text-align: center; }
-      .thread-item { padding: 20px; }
     }
   </style>
 </head>
@@ -613,7 +541,7 @@
     </div>
   </section>
 
-  <!-- Sección de Redes Sociales -->
+  <!-- Sección de Redes Sociales - Incluyendo Threads -->
   <section class="fade-in" style="background: var(--gris-claro);">
     <h2>Síguenos en Redes Sociales</h2>
     <p>Únete a nuestra comunidad en línea para actualizaciones, eventos y más sobre CIDETIC 2025 y ACI UNI.</p>
@@ -622,6 +550,12 @@
         <a href="https://www.instagram.com/aciuniperuoficial" target="_blank">
           <i class="fab fa-instagram"></i>
           <span>Instagram</span>
+        </a>
+      </div>
+      <div class="social-item fade-in">
+        <a href="https://www.threads.net/@aciuniperuoficial" target="_blank">
+          <i class="fas fa-comments"></i>
+          <span>Threads</span>
         </a>
       </div>
       <div class="social-item fade-in">
@@ -666,15 +600,8 @@
           <span>X (Twitter)</span>
         </a>
       </div>
-      </div>
-      <div class="social-item fade-in">
-        <a href="https://www.threads.com/@aciuniperuoficial" target="_blank">
-          <i class="fab fa-threads"></i>
-          <span>Threads</span>
-        </a>
-      </div>
     </div>
- 
+  </section>
 
   <!-- Formulario de Contacto -->
   <section id="contact-form" class="fade-in">
