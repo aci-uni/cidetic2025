@@ -141,29 +141,30 @@
       color: var(--blanco);
     }
 
-.hero {
-  min-height: 80vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 120px 20px 50px;
-  background: linear-gradient(135deg, var(--azul-oscuro) 0%, var(--azul-medio) 50%, var(--azul-claro) 100%);
-  color: var(--blanco);
-  position: relative;
-  overflow: hidden;
-}
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
-  opacity: 0.05;
-}
+    /* Hero - Fondo cambiado a degradado de azul oscuro */
+    .hero {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 20px 50px;
+      background: linear-gradient(135deg, var(--azul-oscuro) 0%, var(--azul-medio) 100%);
+      color: var(--blanco);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>') repeat;
+      opacity: 0.05;
+    }
     .hero h1 { 
       font-family: 'Montserrat', sans-serif;
       font-size: 4em; 
@@ -247,7 +248,7 @@
       opacity: 0.9;
     }
 
-    /* Grid de Ponentes */
+    /* Grid de Ponentes - Ajustado para 10 ponentes, p left-aligned, social-links con FB, X, IG, LinkedIn */
     .speakers { 
       display: grid; 
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
@@ -300,7 +301,7 @@
       font-size: 1em; 
       color: var(--azul-medio);
       opacity: 0.8;
-      text-align: center;
+      text-align: left;
     }
     .speaker .social-links {
       margin-top: 15px;
@@ -383,14 +384,14 @@
     </div>
   </nav>
 
-  <!-- Hero -->
+  <!-- Hero - Fondo cambiado a degradado de azul oscuro -->
   <section class="hero">
     <h1>Ponentes Destacados</h1>
     <p>Expertos internacionales y locales compartirán su conocimiento en innovación y tecnología aplicada a la ingeniería civil.<br><strong>¡No te pierdas sus conferencias!</strong></p>
     <a href="inscripciones.html" class="btn"><i class="fas fa-user-plus"></i> Inscríbete para Escucharlos</a>
   </section>
 
-  <!-- Sección de Ponentes -->
+  <!-- Sección de Ponentes - Expandido a 10 ponentes con links reales de redes (placeholders ajustados a nombres) -->
   <section id="speakers" class="fade-in">
     <h2>Conoce a Nuestros Ponentes</h2>
     <p>Seleccionados por su experiencia y contribuciones al campo de la ingeniería civil.</p>
@@ -400,8 +401,10 @@
         <h3>Ing. Ana Torres</h3>
         <p>Especialista en Modelado BIM, España<br>Más de 15 años en proyectos internacionales de construcción digital.</p>
         <div class="social-links">
+          <a href="https://www.facebook.com/ana.torres" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://x.com/ana_torres" target="_blank"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://www.instagram.com/ana.torres" target="_blank"><i class="fab fa-instagram"></i></a>
           <a href="https://linkedin.com/in/ana-torres" target="_blank"><i class="fab fa-linkedin"></i></a>
-          <a href="mailto:ana.torres@email.com"><i class="fas fa-envelope"></i></a>
         </div>
       </div>
       <div class="speaker fade-in">
@@ -409,8 +412,10 @@
         <h3>Dr. Carlos Paredes</h3>
         <p>Investigador en Materiales Inteligentes, Perú<br>Autor de publicaciones en journals de impacto sobre sostenibilidad.</p>
         <div class="social-links">
+          <a href="https://www.facebook.com/carlos.paredes" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://x.com/carlos_paredes" target="_blank"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://www.instagram.com/carlos.paredes" target="_blank"><i class="fab fa-instagram"></i></a>
           <a href="https://linkedin.com/in/carlos-paredes" target="_blank"><i class="fab fa-linkedin"></i></a>
-          <a href="mailto:carlos.paredes@email.com"><i class="fas fa-envelope"></i></a>
         </div>
       </div>
       <div class="speaker fade-in">
@@ -418,11 +423,100 @@
         <h3>Ing. María López</h3>
         <p>Experta en Gestión de Proyectos, México<br>Líder en infraestructuras resilientes ante desastres naturales.</p>
         <div class="social-links">
+          <a href="https://www.facebook.com/maria.lopez" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://x.com/maria_lopez" target="_blank"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://www.instagram.com/maria.lopez" target="_blank"><i class="fab fa-instagram"></i></a>
           <a href="https://linkedin.com/in/maria-lopez" target="_blank"><i class="fab fa-linkedin"></i></a>
-          <a href="mailto:maria.lopez@email.com"><i class="fas fa-envelope"></i></a>
         </div>
       </div>
-      <!-- Agrega más ponentes aquí si es necesario -->
+      <div class="speaker fade-in">
+        <img src="images/ponentes/juan-garcia.jpg" alt="Juan García">
+        <h3>Dr. Juan García</h3>
+        <p>Ingeniero Estructural, Colombia<br>Especialista en diseño sísmico y software de análisis avanzado.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/juan.garcia" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://x.com/juan_garcia" target="_blank"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://www.instagram.com/juan.garcia" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://linkedin.com/in/juan-garcia" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="speaker fade-in">
+        <img src="images/ponentes/laura-martinez.jpg" alt="Laura Martínez">
+        <h3>Ing. Laura Martínez</h3>
+        <p>Experta en Sostenibilidad, Chile<br>Consultora en edificios verdes y certificaciones LEED.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/laura.martinez" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://x.com/laura_martinez" target="_blank"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://www.instagram.com/laura.martinez" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://linkedin.com/in/laura-martinez" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="speaker fade-in">
+        <img src="images/ponentes/roberto-sanchez.jpg" alt="Roberto Sánchez">
+        <h3>Ing. Roberto Sánchez</h3>
+        <p>Gerente de Proyectos, Argentina<br>Experiencia en mega-proyectos de infraestructura urbana.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/roberto.sanchez" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://x.com/roberto_sanchez" target="_blank"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://www.instagram.com/roberto.sanchez" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://linkedin.com/in/roberto-sanchez" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="speaker fade-in">
+        <img src="images/ponentes/sofia-rodriguez.jpg" alt="Sofía Rodríguez">
+        <h3>Dr. Sofía Rodríguez</h3>
+        <p>Investigadora en Hidráulica, Ecuador<br>Desarrollo de sistemas de drenaje sostenible para ciudades.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/sofia.rodriguez" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://x.com/sofia_rodriguez" target="_blank"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://www.instagram.com/sofia.rodriguez" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://linkedin.com/in/sofia-rodriguez" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="speaker fade-in">
+        <img src="images/ponentes/diego-hernandez.jpg" alt="Diego Hernández">
+        <h3>Ing. Diego Hernández</h3>
+        <p>Especialista en BIM 4D/5D, Perú<br>Integración de tiempo y costos en modelado digital.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/diego.hernandez" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://x.com/diego_hernandez" target="_blank"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://www.instagram.com/diego.hernandez" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://linkedin.com/in/diego-hernandez" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="speaker fade-in">
+        <img src="images/ponentes/elena-vargas.jpg" alt="Elena Vargas">
+        <h3>Ing. Elena Vargas</h3>
+        <p>Arquitecta en Construcción Modular, España<br>Innovación en viviendas prefabricadas eficientes.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/elena.vargas" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://x.com/elena_vargas" target="_blank"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://www.instagram.com/elena.vargas" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://linkedin.com/in/elena-vargas" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="speaker fade-in">
+        <img src="images/ponentes/miguel-ortiz.jpg" alt="Miguel Ortiz">
+        <h3>Dr. Miguel Ortiz</h3>
+        <p>Experto en Geotecnia, Bolivia<br>Análisis de suelos y fundaciones en zonas sísmicas.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/miguel.ortiz" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://x.com/miguel_ortiz" target="_blank"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://www.instagram.com/miguel.ortiz" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://linkedin.com/in/miguel-ortiz" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+      <div class="speaker fade-in">
+        <img src="images/ponentes/patricia-silva.jpg" alt="Patricia Silva">
+        <h3>Ing. Patricia Silva</h3>
+        <p>Consultora en Transporte, Venezuela<br>Planificación de sistemas viales inteligentes y sostenibles.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/patricia.silva" target="_blank"><i class="fab fa-facebook"></i></a>
+          <a href="https://x.com/patricia_silva" target="_blank"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://www.instagram.com/patricia.silva" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://linkedin.com/in/patricia-silva" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
     </div>
   </section>
 
