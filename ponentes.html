@@ -7,7 +7,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   <style>
-    /* [Copia todos los estilos CSS de index.html/programa.html para consistencia: :root, *, html, body, animaciones, navbar, hero, sections, footer, responsive] */
     :root {
       --azul-oscuro: #0A1F44;
       --azul-medio: #1E3A8A;
@@ -17,6 +16,7 @@
       --gris-medio: #E2E8F0;
       --celeste: #60A5FA;
       --dorado: #F59E0B;
+      --verde-whatsapp: #25D366;
       --sombra-suave: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
       --sombra-hover: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     }
@@ -38,7 +38,7 @@
     }
     .fade-in { animation: fadeInUp 0.8s ease-out forwards; }
 
-    /* Navbar - Copia exacta */
+    /* Navbar - Copia exacta, pero CTA ajustado a "Inscripción" */
     .navbar {
       position: fixed;
       top: 0;
@@ -141,7 +141,7 @@
       color: var(--blanco);
     }
 
-    /* Hero - Fondo cambiado a degradado de azul oscuro */
+    /* Hero - Más directo, sin redundancia */
     .hero {
       min-height: 80vh;
       display: flex;
@@ -150,7 +150,7 @@
       align-items: center;
       text-align: center;
       padding: 120px 20px 50px;
-      background: linear-gradient(135deg, var(--azul-oscuro) 0%, var(--azul-medio) 100%);
+      background: linear-gradient(135deg, var(--azul-oscuro) 0%, var(--azul-medio) 50%, var(--azul-claro) 100%);
       color: var(--blanco);
       position: relative;
       overflow: hidden;
@@ -167,69 +167,36 @@
     }
     .hero h1 { 
       font-family: 'Montserrat', sans-serif;
-      font-size: 4em; 
+      font-size: 3.5em; 
       font-weight: 700;
       margin-bottom: 20px;
       text-shadow: 0 2px 4px rgba(0,0,0,0.3);
       animation: fadeInUp 1s ease-out;
     }
     .hero p { 
-      font-size: 1.4em; 
+      font-size: 1.3em; 
       margin-bottom: 40px; 
-      max-width: 800px;
+      max-width: 700px;
       opacity: 0.95;
       animation: fadeInUp 1s ease-out 0.2s both;
     }
-    .hero .btn { 
-      text-decoration: none; 
-      padding: 15px 35px; 
-      background: linear-gradient(135deg, var(--celeste), var(--dorado));
-      color: var(--blanco); 
-      border-radius: 50px; 
-      font-weight: 700; 
-      font-size: 1.1em;
-      transition: all 0.3s ease;
-      box-shadow: var(--sombra-suave);
-      animation: fadeInUp 1s ease-out 0.4s both;
-      position: relative;
-      overflow: hidden;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .hero .btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: left 0.5s;
-    }
-    .hero .btn:hover::before { left: 100%; }
-    .hero .btn:hover { 
-      transform: translateY(-3px);
-      box-shadow: var(--sombra-hover);
-      color: var(--blanco);
-    }
 
-    /* Secciones generales */
-    section { 
-      padding: 100px 20px; 
-      max-width: 1200px; 
-      margin: 0 auto; 
-      text-align: center; 
+    /* Formulario - Sección principal */
+    .form-section {
+      background: var(--blanco);
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
     }
-    section:nth-child(even) { background: var(--gris-claro); }
-    section h2 { 
+    .form-section h2 {
       font-family: 'Montserrat', sans-serif;
-      font-size: 2.8em; 
-      margin-bottom: 30px; 
+      font-size: 2.8em;
+      margin-bottom: 30px;
       color: var(--azul-oscuro);
       position: relative;
     }
-    section h2::after {
+    .form-section h2::after {
       content: '';
       display: block;
       width: 60px;
@@ -238,83 +205,147 @@
       margin: 10px auto;
       border-radius: 2px;
     }
-    section p { 
-      font-size: 1.2em; 
-      line-height: 1.8; 
-      margin-bottom: 30px; 
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-      opacity: 0.9;
-    }
-
-    /* Grid de Ponentes - Ajustado para 10 ponentes, p left-aligned, social-links con FB, X, IG, LinkedIn */
-    .speakers { 
-      display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-      gap: 40px; 
-      margin-top: 50px; 
-    }
-    .speaker { 
-      background: var(--blanco); 
-      border-radius: 20px; 
-      padding: 30px; 
-      transition: all 0.3s ease;
+    .form-container {
+      max-width: 500px;
+      margin: 0 auto;
+      background: var(--gris-claro);
+      padding: 40px;
+      border-radius: 20px;
       box-shadow: var(--sombra-suave);
-      position: relative;
-      overflow: hidden;
+      animation: fadeInUp 1s ease-out 0.4s both;
+    }
+    .form-group {
+      margin-bottom: 25px;
       text-align: left;
     }
-    .speaker::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--celeste), var(--dorado));
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--azul-oscuro);
+      font-size: 1em;
     }
-    .speaker:hover { 
-      transform: translateY(-10px);
+    .form-group input {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid var(--gris-medio);
+      border-radius: 10px;
+      font-size: 1em;
+      transition: all 0.3s ease;
+      background: var(--blanco);
+    }
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--celeste);
+      box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+    }
+    .form-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .btn {
+      text-decoration: none;
+      padding: 15px 30px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1em;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      border: none;
+      min-width: 200px;
+      justify-content: center;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--celeste), var(--dorado));
+      color: var(--blanco);
+      box-shadow: var(--sombra-suave);
+    }
+    .btn-primary:hover:not(:disabled) {
+      transform: translateY(-3px);
+      box-shadow: var(--sombra-hover);
+      color: var(--blanco);
+    }
+    .btn-whatsapp {
+      background: var(--verde-whatsapp);
+      color: var(--blanco);
+      box-shadow: var(--sombra-suave);
+      text-decoration: none;
+    }
+    .btn-whatsapp:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--sombra-hover);
+      color: var(--blanco);
+      background: #128C7E;
+    }
+    .btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+    .success-message,
+    .error-message {
+      display: none;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 20px;
+      font-weight: 600;
+    }
+    .success-message {
+      background: #D4EDDA;
+      color: #155724;
+      border: 1px solid #C3E6CB;
+    }
+    .error-message {
+      background: #F8D7DA;
+      color: #721C24;
+      border: 1px solid #F5C6CB;
+    }
+    .show { display: block; }
+
+    /* Beneficios (opcional, teaser) */
+    .benefits {
+      padding: 80px 20px;
+      background: var(--gris-claro);
+      text-align: center;
+    }
+    .benefits h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5em;
+      margin-bottom: 40px;
+      color: var(--azul-oscuro);
+    }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .benefit-item {
+      background: var(--blanco);
+      padding: 30px 20px;
+      border-radius: 15px;
+      box-shadow: var(--sombra-suave);
+      transition: all 0.3s ease;
+    }
+    .benefit-item:hover {
+      transform: translateY(-5px);
       box-shadow: var(--sombra-hover);
     }
-    .speaker img { 
-      width: 140px; 
-      height: 140px; 
-      border-radius: 50%; 
-      margin-bottom: 20px; 
-      border: 4px solid var(--celeste);
-      transition: transform 0.3s ease;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .speaker:hover img { transform: scale(1.05); }
-    .speaker h3 { 
-      font-family: 'Montserrat', sans-serif;
-      margin-bottom: 10px; 
-      color: var(--azul-oscuro);
-      font-size: 1.4em;
-      text-align: center;
-    }
-    .speaker p { 
-      font-size: 1em; 
-      color: var(--azul-medio);
-      opacity: 0.8;
-      text-align: left;
-    }
-    .speaker .social-links {
-      margin-top: 15px;
-      text-align: center;
-    }
-    .speaker .social-links a {
+    .benefit-item i {
+      font-size: 2.5em;
       color: var(--celeste);
-      font-size: 1.2em;
-      margin: 0 10px;
-      transition: color 0.3s ease;
+      margin-bottom: 15px;
     }
-    .speaker .social-links a:hover {
-      color: var(--dorado);
+    .benefit-item h3 {
+      font-family: 'Montserrat', sans-serif;
+      margin-bottom: 10px;
+      color: var(--azul-oscuro);
     }
 
     /* Footer - Copia exacta */
@@ -345,20 +376,20 @@
       .nav-menu { gap: 20px; order: 2; }
       .nav-logo { order: 1; }
       .nav-cta { order: 3; }
-      .hero { padding: 120px 20px 40px; min-height: 80vh; }
+      .hero { padding: 120px 20px 40px; min-height: 70vh; }
       .hero h1 { font-size: 2.5em; }
-      .hero p { font-size: 1.2em; }
-      section { padding: 60px 20px; }
-      section h2 { font-size: 2.2em; }
-      .speakers { grid-template-columns: 1fr; gap: 20px; }
+      .hero p { font-size: 1.1em; }
+      .form-container { padding: 30px 20px; }
+      .form-buttons { flex-direction: column; }
+      .btn { min-width: auto; width: 100%; }
+      .benefits-grid { grid-template-columns: 1fr; gap: 20px; }
       .nav-menu { flex-wrap: wrap; justify-content: center; }
       .nav-menu li a i { display: none; }
     }
     @media (max-width: 480px) {
-      .nav-menu { gap: 15px; }
       .hero h1 { font-size: 2em; }
-      .hero .btn { padding: 12px 25px; font-size: 1em; }
-      .nav-cta .btn-cta { padding: 8px 16px; font-size: 0.9em; }
+      .form-section { padding: 60px 15px; }
+      .benefits { padding: 60px 15px; }
     }
   </style>
 </head>
