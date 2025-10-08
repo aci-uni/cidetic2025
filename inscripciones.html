@@ -514,8 +514,10 @@
     e.preventDefault();
     
     // Capturar referencia al formulario y botón para evitar problemas con 'this' en callbacks
-    const form = this;
-    const btn = form.querySelector('button[type="submit"]');
+    const params = {
+        nombre: document.getElementById("nombre").value,
+        correo: document.getElementById("correo").value,
+      };
     
     // Deshabilitar botón y mostrar spinner
     btn.disabled = true;
