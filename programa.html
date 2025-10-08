@@ -248,13 +248,32 @@
       opacity: 0.9;
     }
 
-    /* Timeline del programa */
-    .timeline {
+    /* Timeline del programa - Ajustado para secciones virtual y presencial */
+    .program-section {
+      margin-bottom: 80px;
+    }
+    .program-section h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.2em;
+      color: var(--azul-oscuro);
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .program-section h3::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--celeste), var(--dorado));
+      margin: 10px auto;
+      border-radius: 2px;
+    }
+    .program-section .timeline {
       max-width: 800px;
       margin: 50px auto;
       position: relative;
     }
-    .timeline::before {
+    .program-section .timeline::before {
       content: '';
       position: absolute;
       left: 50%;
@@ -264,15 +283,15 @@
       background: linear-gradient(to bottom, var(--celeste), var(--dorado));
       transform: translateX(-50%);
     }
-    .timeline-item {
+    .program-section .timeline-item {
       display: flex;
       margin-bottom: 50px;
       position: relative;
     }
-    .timeline-item:nth-child(even) {
+    .program-section .timeline-item:nth-child(even) {
       flex-direction: row-reverse;
     }
-    .timeline-content {
+    .program-section .timeline-content {
       width: 45%;
       background: var(--blanco);
       padding: 25px;
@@ -281,31 +300,37 @@
       transition: all 0.3s ease;
       position: relative;
     }
-    .timeline-content:hover {
+    .program-section .timeline-content:hover {
       transform: translateY(-5px);
       box-shadow: var(--sombra-hover);
     }
-    .timeline-content h3 {
+    .program-section .timeline-content h4 {
       font-family: 'Montserrat', sans-serif;
       color: var(--azul-oscuro);
+      margin-bottom: 5px;
+      font-size: 1.1em;
+    }
+    .program-section .timeline-content .speaker {
+      color: var(--celeste);
+      font-weight: 600;
       margin-bottom: 10px;
     }
-    .timeline-content p {
+    .program-section .timeline-content p {
       color: var(--azul-medio);
-      font-size: 1em;
+      font-size: 0.95em;
     }
-    .timeline-date {
+    .program-section .timeline-date {
       width: 45%;
       text-align: center;
       padding: 20px;
     }
-    .timeline-date h4 {
+    .program-section .timeline-date h4 {
       font-family: 'Montserrat', sans-serif;
       color: var(--celeste);
       font-size: 1.2em;
       margin-bottom: 10px;
     }
-    .timeline-dot {
+    .program-section .timeline-dot {
       position: absolute;
       left: 50%;
       top: 25px;
@@ -317,6 +342,20 @@
       box-shadow: 0 0 0 4px var(--blanco);
       z-index: 1;
     }
+    .modality-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--celeste);
+      color: var(--blanco);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.85em;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .modality-badge.virtual { background: var(--azul-claro); }
+    .modality-badge.presencial { background: var(--dorado); }
 
     /* Footer - Copia exacta */
     footer { 
@@ -351,10 +390,10 @@
       .hero p { font-size: 1.2em; }
       section { padding: 60px 20px; }
       section h2 { font-size: 2.2em; }
-      .timeline::before { left: 20px; }
-      .timeline-item { flex-direction: column; }
-      .timeline-content, .timeline-date { width: 100%; margin-bottom: 20px; }
-      .timeline-dot { left: 20px; }
+      .program-section .timeline::before { left: 20px; }
+      .program-section .timeline-item { flex-direction: column; }
+      .program-section .timeline-content, .program-section .timeline-date { width: 100%; margin-bottom: 20px; }
+      .program-section .timeline-dot { left: 20px; }
       .nav-menu { flex-wrap: wrap; justify-content: center; }
       .nav-menu li a i { display: none; }
     }
@@ -389,69 +428,158 @@
 
   <!-- Hero -->
   <section class="hero">
-    <h1>Programa Completo</h1>
-    <p>Explora el itinerario detallado del CIDETIC 2025, diseñado para maximizar el aprendizaje y la interacción.<br><strong>Del 24 al 28 de noviembre en Lima, Perú.</strong></p>
-    <a href="inscripciones.html" class="btn"><i class="fas fa-user-plus"></i> Asegura tu Lugar</a>
+    <h1>Programa Híbrido</h1>
+    <p>Explora el itinerario detallado del CIDETIC 2025 en formato híbrido: sesiones virtuales accesibles globalmente y presenciales en Lima, Perú.<br><strong>Del 24 al 28 de noviembre - Participa desde donde estés.</strong></p>
+    <a href="inscripciones.html" class="btn"><i class="fas fa-user-plus"></i> Elige tu Modalidad</a>
   </section>
 
-  <!-- Sección del Programa -->
+  <!-- Sección del Programa - Dividido en Virtual y Presencial -->
   <section class="fade-in">
-    <h2>Itinerario Día por Día</h2>
-    <p>El programa combina conferencias magistrales, talleres prácticos y sesiones interactivas para cubrir temas clave en ingeniería civil.</p>
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-date">
-          <h4>24 Nov</h4>
-          <p>Inauguración</p>
+    <h2>Itinerario Detallado</h2>
+    <p>El programa combina conferencias magistrales, talleres prácticos y sesiones interactivas para cubrir temas clave en ingeniería civil, disponibles en dos modalidades.</p>
+
+    <!-- Sección Virtual -->
+    <div class="program-section">
+      <h3>Sesiones Virtuales <i class="fas fa-video" style="color: var(--azul-claro);"></i></h3>
+      <p>Accede desde cualquier lugar del mundo a través de nuestra plataforma en línea con transmisión en vivo y grabaciones disponibles.</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">
+            <h4>24 Nov - 9:00 AM</h4>
+            <p>Conferencia Magistral</p>
+          </div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="modality-badge virtual"><i class="fas fa-globe"></i> Virtual</span>
+            <h4>Modelado BIM Avanzado</h4>
+            <div class="speaker">Ing. Ana Torres (España)</div>
+            <p>Exploración de herramientas digitales para la optimización de proyectos de construcción. Incluye Q&A en vivo.</p>
+          </div>
         </div>
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <h3>Conferencias Magistrales</h3>
-          <p>Apertura oficial con ponentes internacionales sobre tendencias en infraestructura sostenible y digitalización en la construcción.</p>
+        <div class="timeline-item">
+          <div class="timeline-date">
+            <h4>25 Nov - 10:30 AM</h4>
+            <p>Taller Interactivo</p>
+          </div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="modality-badge virtual"><i class="fas fa-globe"></i> Virtual</span>
+            <h4>Materiales Inteligentes y Sostenibilidad</h4>
+            <div class="speaker">Dr. Carlos Paredes (Perú)</div>
+            <p>Sesión práctica sobre innovación en materiales para la construcción ecológica, con demostraciones virtuales.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">
+            <h4>26 Nov - 2:00 PM</h4>
+            <p>Panel de Discusión</p>
+          </div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="modality-badge virtual"><i class="fas fa-globe"></i> Virtual</span>
+            <h4>Gestión de Proyectos Resilientes</h4>
+            <div class="speaker">Ing. María López (México)</div>
+            <p>Análisis de estrategias para infraestructuras ante desastres, con participación del público vía chat.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">
+            <h4>27 Nov - 11:00 AM</h4>
+            <p>Conferencia Técnica</p>
+          </div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="modality-badge virtual"><i class="fas fa-globe"></i> Virtual</span>
+            <h4>Diseño Sísmico Estructural</h4>
+            <div class="speaker">Dr. Juan García (Colombia)</div>
+            <p>Software y metodologías para el análisis sísmico en edificaciones, con casos de estudio interactivos.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">
+            <h4>28 Nov - 9:30 AM</h4>
+            <p>Sesión de Cierre</p>
+          </div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="modality-badge virtual"><i class="fas fa-globe"></i> Virtual</span>
+            <h4>Edificios Verdes y Certificaciones LEED</h4>
+            <div class="speaker">Ing. Laura Martínez (Chile)</div>
+            <p>Guía práctica para la implementación de prácticas sostenibles, con certificación digital al finalizar.</p>
+          </div>
         </div>
       </div>
-      <div class="timeline-item">
-        <div class="timeline-date">
-          <h4>25 Nov</h4>
-          <p>Talleres</p>
+    </div>
+
+    <!-- Sección Presencial -->
+    <div class="program-section">
+      <h3>Sesiones Presenciales <i class="fas fa-map-marker-alt" style="color: var(--dorado);"></i></h3>
+      <p>Únete a nosotros en el Auditorio Principal de la UNI, Lima, para una experiencia inmersiva con networking y demostraciones en vivo.</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">
+            <h4>24 Nov - 3:00 PM</h4>
+            <p>Inauguración Presencial</p>
+          </div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="modality-badge presencial"><i class="fas fa-users"></i> Presencial</span>
+            <h4>Mega-Proyectos de Infraestructura Urbana</h4>
+            <div class="speaker">Ing. Roberto Sánchez (Argentina)</div>
+            <p>Presentación con maquetas físicas y tour virtual de proyectos reales, seguido de coffee break.</p>
+          </div>
         </div>
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <h3>Talleres Prácticos</h3>
-          <p>Sesiones hands-on en modelado BIM, software de simulación y herramientas de gestión de proyectos.</p>
+        <div class="timeline-item">
+          <div class="timeline-date">
+            <h4>25 Nov - 4:00 PM</h4>
+            <p>Taller Práctico</p>
+          </div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="modality-badge presencial"><i class="fas fa-users"></i> Presencial</span>
+            <h4>Sistemas de Drenaje Sostenible</h4>
+            <div class="speaker">Dr. Sofía Rodríguez (Ecuador)</div>
+            <p>Demostración hands-on con modelos hidráulicos y laboratorio interactivo en el campus UNI.</p>
+          </div>
         </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-date">
-          <h4>26 Nov</h4>
-          <p>Paneles</p>
+        <div class="timeline-item">
+          <div class="timeline-date">
+            <h4>26 Nov - 3:30 PM</h4>
+            <p>Conferencia Aplicada</p>
+          </div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="modality-badge presencial"><i class="fas fa-users"></i> Presencial</span>
+            <h4>BIM 4D/5D en Proyectos Reales</h4>
+            <div class="speaker">Ing. Diego Hernández (Perú)</div>
+            <p>Taller con software instalado en computadoras del evento, incluyendo simulaciones en tiempo real.</p>
+          </div>
         </div>
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <h3>Paneles y Debates</h3>
-          <p>Discusiones sobre innovación en materiales inteligentes y desafíos en la ingeniería civil peruana.</p>
+        <div class="timeline-item">
+          <div class="timeline-date">
+            <h4>27 Nov - 2:30 PM</h4>
+            <p>Sesión Práctica</p>
+          </div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="modality-badge presencial"><i class="fas fa-users"></i> Presencial</span>
+            <h4>Construcción Modular y Prefabricada</h4>
+            <div class="speaker">Ing. Elena Vargas (España)</div>
+            <p>Visita guiada a un showroom de módulos prefabricados y taller de ensamblaje práctico.</p>
+          </div>
         </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-date">
-          <h4>27 Nov</h4>
-          <p>Concursos</p>
-        </div>
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <h3>Concursos Estudiantiles</h3>
-          <p>Competencias de diseño y networking con empresas líderes del sector.</p>
-        </div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-date">
-          <h4>28 Nov</h4>
-          <p>Clausura</p>
-        </div>
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <h3>Clausura y Reconocimientos</h3>
-          <p>Entrega de certificados, cierre inspirador y oportunidades de colaboración futura.</p>
+        <div class="timeline-item">
+          <div class="timeline-date">
+            <h4>28 Nov - 1:00 PM</h4>
+            <p>Clausura Presencial</p>
+          </div>
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="modality-badge presencial"><i class="fas fa-users"></i> Presencial</span>
+            <h4>Análisis Geotécnico en Zonas Sísmicas</h4>
+            <div class="speaker">Dr. Miguel Ortiz (Bolivia)</div>
+            <p>Demostración de pruebas de suelo en laboratorio y entrega de certificados en ceremonia de cierre.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -475,4 +603,3 @@
   </script>
 </body>
 </html>
-
