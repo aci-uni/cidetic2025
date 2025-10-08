@@ -654,28 +654,19 @@
       });
     });
 
-    // EmailJS para formulario de contacto
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const btn = this.querySelector('button[type="submit"]');
-      btn.disabled = true;
-      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+    <form action="https://formspree.io/f/mdkwldvz" method="POST">
+  <label for="nombre">Nombre</label>
+  <input type="text" name="nombre" required>
 
-      emailjs.sendForm('TU_SERVICE_ID', 'TU_TEMPLATE_ID', this)
-        .then(function() {
-          document.getElementById('successMessage').classList.add('show');
-          document.getElementById('errorMessage').classList.remove('show');
-          this.reset();
-        }, function(error) {
-          console.log('Error:', error);
-          document.getElementById('errorMessage').classList.add('show');
-          document.getElementById('successMessage').classList.remove('show');
-        })
-        .finally(() => {
-          btn.disabled = false;
-          btn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar Mensaje';
-        });
-    });
+  <label for="correo">Correo electrónico</label>
+  <input type="email" name="correo" required>
+
+  <label for="mensaje">Mensaje</label>
+  <textarea name="mensaje" rows="5" required></textarea>
+
+  <button type="submit">Enviar mensaje</button>
+</form>
+
   </script>
 </body>
 </html>
