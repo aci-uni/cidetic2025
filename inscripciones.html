@@ -500,47 +500,34 @@
         });
       });
     });
+  </script>
+  <script type="text/javascript">
+    // Inicialización de EmailJS con tu User ID real
+    emailjs.init("y3wak8BAWXn77vQpx");
 
-    // EmailJS para formulario de inscripción
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script type="text/javascript">
-  // Inicialización de EmailJS (¡Reemplaza con tu Public Key real!)
-  (function() {
-    emailjs.init("y3wak8BAWXn77vQpx"); // Ejemplo: "user_abc123def456" – Obtén esto de tu dashboard de EmailJS
-  })();
+    // Event listener para el formulario de inscripción
+    document.getElementById('inscriptionForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const btn = form.querySelector('button[type="submit"]');
 
-  // Event listener para el formulario de inscripción
-  document.getElementById('inscriptionForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Capturar referencia al formulario y botón para evitar problemas con 'this' en callbacks
-    const params = {
-        nombre: document.getElementById("nombre").value,
-        correo: document.getElementById("correo").value,
-      };
-    
-    // Deshabilitar botón y mostrar spinner
-    btn.disabled = true;
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
 
-    // Enviar el formulario con EmailJS
-    emailjs.sendForm('service_igo5l5i', 'template_7qco2t7', form)
-      .then(function(response) {
-        console.log('Éxito:', response.status, response.text); // Para debugging
-        document.getElementById('successMessage').classList.add('show');
-        document.getElementById('errorMessage').classList.remove('show');
-        form.reset(); // Limpiar el formulario
-      }, function(error) {
-        console.log('Error:', error); // Para debugging
-        document.getElementById('errorMessage').classList.add('show');
-        document.getElementById('successMessage').classList.remove('show');
-      })
-      .finally(() => {
-        // Restaurar botón
-        btn.disabled = false;
-        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar Inscripción';
-      });
-  });
-</script>
+      emailjs.sendForm('service_igo5l5i', 'template_7qco2t7', form)
+        .then(function(response) {
+          document.getElementById('successMessage').classList.add('show');
+          document.getElementById('errorMessage').classList.remove('show');
+          form.reset();
+        }, function(error) {
+          document.getElementById('errorMessage').classList.add('show');
+          document.getElementById('successMessage').classList.remove('show');
+        })
+        .finally(() => {
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar Inscripción';
+        });
+    });
+  </script>
 </body>
 </html>
