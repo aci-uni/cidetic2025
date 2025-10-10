@@ -26,19 +26,19 @@
     .fade-in { animation: fadeInUp 0.8s ease-out forwards; }
     .navbar { position: fixed; top: 0; width: 100%; background: rgba(10, 31, 68, 0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.1); z-index: 1000; transition: all 0.3s ease; padding: 10px 0; }
     .navbar.scrolled { background: rgba(10, 31, 68, 0.98); padding: 8px 0; box-shadow: var(--sombra-suave); }
-    .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
-    .nav-logo { display: flex; align-items: center; gap: 10px; }
+    .nav-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; position: relative; }
+    .menu-toggle { background: none; border: none; font-size: 2em; color: white; cursor: pointer; margin-right: 10px; order: 1; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; order: 2; justify-content: center; flex: 1; }
+    .nav-menu { display: flex; gap: 30px; list-style: none; align-items: center; margin: 0; order: 3; flex: 2; justify-content: center; }
+    .nav-cta { display: flex; align-items: center; order: 4; margin-left: auto; }
     .nav-logo img { height: 40px; width: auto; transition: transform 0.3s ease; }
     .nav-logo:hover img { transform: scale(1.05); }
     .nav-logo span { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.2em; color: var(--blanco); }
-    .menu-toggle { display: none; background: none; border: none; font-size: 2em; color: white; cursor: pointer; }
-    .nav-menu { display: flex; gap: 30px; list-style: none; align-items: center; margin: 0; flex: 1; justify-content: center; }
     .nav-menu li a { color: var(--blanco); text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.3s ease; position: relative; display: flex; align-items: center; gap: 5px; padding: 5px 0; }
     .nav-menu li a::after { content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 2px; background: linear-gradient(90deg, var(--celeste), var(--dorado)); transition: all 0.3s ease; transform: translateX(-50%);}
     .nav-menu li a:hover::after, .nav-menu li a.active::after { width: 100%; }
     .nav-menu li a:hover { color: var(--celeste); }
     .nav-menu li a.active { color: var(--celeste); }
-    .nav-cta { display: flex; align-items: center; }
     .nav-cta .btn-cta { text-decoration: none; padding: 10px 20px; background: linear-gradient(135deg, var(--celeste), var(--dorado)); color: var(--blanco); border-radius: 25px; font-weight: 600; font-size: 0.95em; transition: all 0.3s ease; box-shadow: var(--sombra-suave); white-space: nowrap; }
     .nav-cta .btn-cta:hover { transform: translateY(-2px); box-shadow: var(--sombra-hover); color: var(--blanco); }
     .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 120px 20px 50px; background: linear-gradient(135deg, var(--azul-oscuro) 0%, var(--azul-medio) 50%, var(--azul-claro) 100%); color: var(--blanco); position: relative; overflow: hidden; }
@@ -65,14 +65,33 @@
     footer strong { color: var(--celeste); }
     footer a { color: var(--celeste); text-decoration: none; transition: color 0.3s;}
     footer a:hover { color: var(--dorado);}
-    /* Responsive */
+    @media (max-width: 900px) {
+      .nav-container { flex-wrap: nowrap; }
+      .nav-logo { flex: 1; justify-content: center; }
+      .nav-cta { margin-left: 0; }
+    }
     @media (max-width: 768px) {
-      .nav-container { padding: 0 15px; flex-direction: column; gap: 10px; }
-      .menu-toggle { display: block; }
-      .nav-menu { display: none; flex-direction: column; gap: 10px; }
+      .nav-container { flex-direction: row; align-items: center; justify-content: space-between; }
+      .menu-toggle { display: block; order: 1; }
+      .nav-logo { order: 2; flex: 1; justify-content: center; }
+      .nav-cta { order: 4; margin-left: auto; }
+      .nav-menu {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        position: absolute;
+        top: 56px;
+        left: 0;
+        width: 100vw;
+        background: rgba(10,31,68,0.98);
+        box-shadow: var(--sombra-suave);
+        z-index: 999;
+        padding: 20px 0;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        border-top: 1px solid rgba(255,255,255,0.1);
+      }
       .nav-menu.active { display: flex; }
       .nav-menu li a i { display: none; }
-      .nav-cta { order: 3; }
       .hero { padding: 120px 20px 40px; min-height: 80vh; }
       .hero h1 { font-size: 2.5em; }
       .hero p { font-size: 1.2em; }
@@ -93,11 +112,11 @@
   <!-- Navbar -->
   <nav class="navbar">
     <div class="nav-container">
+      <button class="menu-toggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
       <div class="nav-logo">
         <img src="assets/logo-aci-uni.png" alt="ACI UNI Logo">
         <span>CIDETIC 2025</span>
       </div>
-      <button class="menu-toggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
       <ul class="nav-menu">
         <li><a href="index.html" class="active"><i class="fas fa-home"></i> Inicio</a></li>
         <li><a href="programa.html"><i class="fas fa-calendar-alt"></i> Programa</a></li>
