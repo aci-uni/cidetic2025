@@ -53,10 +53,10 @@
     section h2 { font-family: 'Montserrat', sans-serif; font-size: 2.2em; margin-bottom: 30px; color: var(--azul-oscuro); position: relative;}
     section h2::after { content: ''; display: block; width: 60px; height: 4px; background: linear-gradient(90deg, var(--celeste), var(--dorado)); margin: 10px auto; border-radius: 2px;}
     section p { font-size: 1.2em; line-height: 1.8; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto; opacity: 0.9;}
-    .contact-info, .social-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 30px;}
-    .contact-section, .social-item { background: var(--blanco); border-radius: 18px; box-shadow: var(--sombra-suave); padding: 20px; transition: all 0.3s ease; text-align: center;}
-    .contact-section:hover, .social-item:hover { transform: translateY(-5px); box-shadow: var(--sombra-hover);}
-    .contact-section h3, .social-item span { font-family: 'Montserrat', sans-serif; margin-bottom: 10px; color: var(--azul-oscuro);}
+    .contact-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 30px;}
+    .contact-section { background: var(--blanco); border-radius: 18px; box-shadow: var(--sombra-suave); padding: 20px; transition: all 0.3s ease; text-align: center;}
+    .contact-section:hover { transform: translateY(-5px); box-shadow: var(--sombra-hover);}
+    .contact-section h3 { font-family: 'Montserrat', sans-serif; margin-bottom: 10px; color: var(--azul-oscuro);}
     .contact-section ul { list-style: none; padding: 0; }
     .contact-section li { margin-bottom: 10px; }
     .form-container { max-width: 500px; margin: 0 auto; background: var(--gris-claro); padding: 40px; border-radius: 20px; box-shadow: var(--sombra-suave); }
@@ -68,6 +68,13 @@
     .btn { text-decoration: none; padding: 12px 35px; background: linear-gradient(135deg, var(--celeste), var(--dorado)); color: var(--blanco); border-radius: 50px; font-weight: 700; font-size: 1em; transition: all 0.3s ease; box-shadow: var(--sombra-suave); border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 10px;}
     .btn:hover:not(:disabled) { transform: translateY(-3px); box-shadow: var(--sombra-hover); color: var(--blanco);}
     .btn:disabled { opacity: 0.7; cursor: not-allowed;}
+    .redes-contacto { margin-top: 32px; }
+    .redes-contacto ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 18px; list-style: none; padding: 0; }
+    .redes-contacto li { background: var(--blanco); border-radius: 16px; box-shadow: var(--sombra-suave); padding: 16px 20px; transition: all 0.3s ease; text-align: left; display: flex; align-items: center; gap: 12px; min-width: 190px; }
+    .redes-contacto li:hover { transform: translateY(-3px); box-shadow: var(--sombra-hover); }
+    .redes-contacto i { font-size: 1.6em; color: var(--celeste); transition: color 0.3s; }
+    .redes-contacto a { color: var(--azul-oscuro); font-weight: 600; text-decoration: none; transition: color 0.3s; }
+    .redes-contacto a:hover { color: var(--dorado); }
     footer { background: linear-gradient(135deg, var(--azul-oscuro), var(--azul-medio)); color: var(--blanco); text-align: center; padding: 40px 20px; font-size: 1em; position: relative;}
     footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--celeste), var(--dorado));}
     footer strong { color: var(--celeste); }
@@ -102,13 +109,15 @@
       .nav-menu li a i { display: none; }
       .hero { padding: 120px 20px 40px; min-height: 50vh; }
       .form-container { padding: 20px 10px; }
-      .contact-info, .social-grid { grid-template-columns: 1fr; gap: 20px; }
+      .contact-info { grid-template-columns: 1fr; gap: 20px; }
+      .redes-contacto ul { flex-direction: column; gap: 12px; }
     }
     @media (max-width: 480px) {
       .nav-menu { gap: 15px; }
       .hero h1 { font-size: 2em; }
       .hero .btn { padding: 12px 25px; font-size: 1em; }
       .nav-cta .btn-cta { padding: 8px 16px; font-size: 0.9em; }
+      .redes-contacto li { min-width: 0; }
     }
   </style>
 </head>
@@ -166,65 +175,47 @@
   </section>
 
   <!-- Redes Sociales -->
-  <section class="fade-in" style="background: var(--gris-claro);">
+  <section class="fade-in redes-contacto" style="background: var(--gris-claro);">
     <h2>Síguenos en Redes Sociales</h2>
     <p>Únete a nuestra comunidad en línea para actualizaciones, eventos y más sobre CIDETIC 2025 y ACI UNI.</p>
-    <div class="social-grid">
-      <div class="social-item fade-in">
-        <a href="https://www.instagram.com/aciuniperuoficial" target="_blank">
-          <i class="fab fa-instagram"></i>
-          <span>Instagram</span>
-        </a>
-      </div>
-      <div class="social-item fade-in">
-        <a href="https://www.threads.net/@aciuniperuoficial" target="_blank">
-          <i class="fab fa-threads"></i>
-          <span>Threads</span>
-        </a>
-      </div>
-      <div class="social-item fade-in">
-        <a href="https://www.tiktok.com/@aci.uni?_t=zs-901ajm08tiz&_r=1" target="_blank">
-          <i class="fab fa-tiktok"></i>
-          <span>TikTok</span>
-        </a>
-      </div>
-      <div class="social-item fade-in">
-        <a href="https://www.facebook.com/aciuniperu" target="_blank">
-          <i class="fab fa-facebook"></i>
-          <span>Facebook</span>
-        </a>
-      </div>
-      <div class="social-item fade-in">
-        <a href="https://www.linkedin.com/in/aci-uni-oficial-2651b1264/" target="_blank">
-          <i class="fab fa-linkedin"></i>
-          <span>LinkedIn</span>
-        </a>
-      </div>
-      <div class="social-item fade-in">
-        <a href="https://youtube.com/@aci_uni?si=UvlfLUo4jm9wJnpE" target="_blank">
-          <i class="fab fa-youtube"></i>
-          <span>YouTube</span>
-        </a>
-      </div>
-      <div class="social-item fade-in">
-        <a href="https://whatsapp.com/channel/0029VbBM55C17En53jwnJo1I" target="_blank">
-          <i class="fab fa-whatsapp"></i>
-          <span>WhatsApp Canal</span>
-        </a>
-      </div>
-      <div class="social-item fade-in">
-        <a href="https://www.atom.bio/aci_uni" target="_blank">
-          <i class="fas fa-link"></i>
-          <span>Atom Bio</span>
-        </a>
-      </div>
-      <div class="social-item fade-in">
-        <a href="https://x.com/aci_uni" target="_blank">
-          <i class="fab fa-x-twitter"></i>
-          <span>X (Twitter)</span>
-        </a>
-      </div>
-    </div>
+    <ul>
+      <li>
+        <i class="fab fa-instagram"></i>
+        <a href="https://www.instagram.com/aciuniperuoficial" target="_blank">Instagram</a>
+      </li>
+      <li>
+        <i class="fab fa-threads"></i>
+        <a href="https://www.threads.net/@aciuniperuoficial" target="_blank">Threads</a>
+      </li>
+      <li>
+        <i class="fab fa-tiktok"></i>
+        <a href="https://www.tiktok.com/@aci.uni?_t=zs-901ajm08tiz&_r=1" target="_blank">TikTok</a>
+      </li>
+      <li>
+        <i class="fab fa-facebook"></i>
+        <a href="https://www.facebook.com/aciuniperu" target="_blank">Facebook</a>
+      </li>
+      <li>
+        <i class="fab fa-linkedin"></i>
+        <a href="https://www.linkedin.com/in/aci-uni-oficial-2651b1264/" target="_blank">LinkedIn</a>
+      </li>
+      <li>
+        <i class="fab fa-youtube"></i>
+        <a href="https://youtube.com/@aci_uni?si=UvlfLUo4jm9wJnpE" target="_blank">YouTube</a>
+      </li>
+      <li>
+        <i class="fab fa-whatsapp"></i>
+        <a href="https://whatsapp.com/channel/0029VbBM55C17En53jwnJo1I" target="_blank">WhatsApp Canal</a>
+      </li>
+      <li>
+        <i class="fas fa-link"></i>
+        <a href="https://www.atom.bio/aci_uni" target="_blank">Atom Bio</a>
+      </li>
+      <li>
+        <i class="fab fa-x-twitter"></i>
+        <a href="https://x.com/aci_uni" target="_blank">X (Twitter)</a>
+      </li>
+    </ul>
   </section>
 
   <!-- Formulario de Contacto -->
