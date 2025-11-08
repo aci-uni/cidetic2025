@@ -7,6 +7,7 @@
   <title>Ponentes - CIDETIC 2025 | Student Chapter ACI UNI</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  
   <style>
     :root {
       --azul-oscuro: #0A1F44;
@@ -279,5 +280,108 @@
       });
     });
   </script>
+  <script>
+(function() {
+  const LINES = 4;
+
+  function pxToNumber(px) {
+    return parseFloat(px || '0');
+  }
+
+  function setupReadMore() {
+    document.querySelectorAll('.speaker .desc').forEach(desc => {
+      // Ensure we start collapsed (use CSS clamp)
+      desc.classList.remove('expanded');
+
+      // Measure full height by temporarily removing clamp styles
+      const prevDisplay = desc.style.display;
+      desc.style.display = 'block';
+      desc.style.webkitLineClamp = 'unset';
+      desc.style.maxHeight = 'none';
+      const fullHeight = desc.scrollHeight;
+      // restore
+      desc.style.display = prevDisplay || '';
+      // compute approx collapsed height (line-height * LINES)
+      const cs = window.getComputedStyle(desc);
+      let lh = pxToNumber(cs.lineHeight);
+      if (!lh || lh === 0) {
+        const fontSize = pxToNumber(cs.fontSize) || 16;
+        lh = fontSize * 1.2;
+      }
+      const collapsedHeight = Math.round(lh * LINES);
+
+      // If text is short, no button needed
+      if (fullHeight <= collapsedHeight + 2) {
+        return;
+      }
+
+      // apply explicit max-height for smooth transition
+      desc.style.maxHeight = collapsedHeight + 'px';
+      desc.dataset.collapsedHeight = collapsedHeight;
+      desc.dataset.fullHeight = fullHeight;
+
+      // create button
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'read-more';
+      btn.textContent = 'Ver más';
+      btn.setAttribute('aria-expanded', 'false');
+
+      btn.addEventListener('click', () => {
+        const expanded = desc.classList.toggle('expanded');
+        if (expanded) {
+          desc.style.maxHeight = desc.dataset.fullHeight + 'px';
+          btn.textContent = 'Ver menos';
+          btn.setAttribute('aria-expanded', 'true');
+        } else {
+          desc.style.maxHeight = desc.dataset.collapsedHeight + 'px';
+          btn.textContent = 'Ver más';
+          btn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // insert button after the description paragraph
+      desc.insertAdjacentElement('afterend', btn);
+
+      // Recalculate on images/fonts load and on window resize
+      const recalc = () => {
+        // temporarily expand to measure full height
+        desc.style.maxHeight = 'none';
+        desc.style.display = 'block';
+        const newFull = desc.scrollHeight;
+        const cs2 = window.getComputedStyle(desc);
+        let lh2 = pxToNumber(cs2.lineHeight);
+        if (!lh2 || lh2 === 0) {
+          const fontSize = pxToNumber(cs2.fontSize) || 16;
+          lh2 = fontSize * 1.2;
+        }
+        const newCollapsed = Math.round(lh2 * LINES);
+        desc.dataset.fullHeight = newFull;
+        desc.dataset.collapsedHeight = newCollapsed;
+        if (!desc.classList.contains('expanded')) {
+          desc.style.maxHeight = newCollapsed + 'px';
+          btn.textContent = 'Ver más';
+          btn.setAttribute('aria-expanded', 'false');
+        } else {
+          desc.style.maxHeight = newFull + 'px';
+          btn.textContent = 'Ver menos';
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      };
+
+      // Recalculate after fonts/images load
+      window.addEventListener('load', recalc);
+      window.addEventListener('resize', () => {
+        // small debounce
+        clearTimeout(desc._rmTimeout);
+        desc._rmTimeout = setTimeout(recalc, 150);
+      });
+    });
+  }
+
+  // Run
+  document.addEventListener('DOMContentLoaded', setupReadMore);
+})();
+</script>
 </body>
 </html>
