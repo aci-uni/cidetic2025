@@ -25,8 +25,9 @@
     body { font-family: 'Inter', sans-serif; background: var(--blanco); color: var(--azul-oscuro); line-height: 1.6; overflow-x: hidden; }
     @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
     .fade-in { animation: fadeInUp 0.8s ease-out forwards; }
-    .navbar { position: fixed; top: 0; width: 100%; background: rgba(10, 31, 68, 0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.06); z-index: 1000; }
-    .navbar.scrolled { background: rgba(10, 31, 68, 0.98); padding: 8px 0; box-shadow: var(--sombra-suave); }
+    /* NAVBAR: keep constant padding so it doesn't change size on scroll */
+    .navbar { position: fixed; top: 0; width: 100%; padding: 8px 0; background: rgba(10, 31, 68, 0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.06); z-index: 1000; transition: background 0.25s ease, box-shadow 0.25s ease; }
+    .navbar.scrolled { background: rgba(10, 31, 68, 0.98); box-shadow: var(--sombra-suave); /* keep same padding */ }
     .nav-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; position: relative; }
     .menu-toggle { background: none; border: none; font-size: 2em; color: white; cursor: pointer; margin-right: 10px; order: 1; }
     .nav-logo { display: flex; align-items: center; gap: 10px; order: 2; justify-content: center; flex: 1; }
@@ -66,17 +67,17 @@
     .program-section .timeline-content h4 { font-family: 'Montserrat', sans-serif; color: var(--azul-oscuro); margin-bottom: 5px; font-size: 1.1em;}
     .program-section .timeline-content .speaker { color: var(--celeste); font-weight: 600; margin-bottom: 10px;}
     .program-section .timeline-content p { color: var(--azul-medio); font-size: 0.95em;}
-    .program-section .timeline-date { width: 45%; text-align: center; padding: 20px;}
+    .program-section .timeline-date { width: 45%; text-align: center; padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 6px; }
     .program-section .timeline-date h4 { font-family: 'Montserrat', sans-serif; color: var(--celeste); font-size: 1.2em; margin-bottom: 10px;}
     .program-section .timeline-dot { position: absolute; left: 50%; top: 25px; width: 20px; height: 20px; background: linear-gradient(135deg, var(--celeste), var(--dorado)); border-radius: 50%; transform: translateX(-50%); box-shadow: 0 6px 16px rgba(0,0,0,0.08); }
     .modality-badge { display: inline-flex; align-items: center; gap: 5px; background: var(--celeste); color: var(--blanco); padding: 5px 12px; border-radius: 20px; font-size: 0.85em; font-weight: 600; }
     .modality-badge.virtual { background: var(--azul-claro); }
     .modality-badge.presencial { background: var(--dorado); }
 
-    /* Título de ponencia y enlace Zoom */
-    .timeline-content .talk-title { font-size: 1.05em; font-weight: 700; color: var(--azul-oscuro); margin: 8px 0 4px; }
-    .timeline-content .zoom-link { display: inline-block; margin-top: 6px; background: linear-gradient(135deg, var(--celeste), var(--dorado)); color: #fff; padding: 6px 10px; border-radius: 8px; text-decoration: none; font-weight: 700; transition: transform 0.15s ease, box-shadow 0.15s ease; }
-    .timeline-content .zoom-link:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(0,0,0,0.08); }
+    /* Título de ponencia y enlace Zoom (now inside .timeline-date) */
+    .program-section .timeline-date .talk-title { font-size: 1.0rem; font-weight: 700; color: var(--azul-oscuro); margin: 4px 0; }
+    .program-section .timeline-date .zoom-link { display: inline-block; margin-top: 4px; background: linear-gradient(135deg, var(--celeste), var(--dorado)); color: #fff; padding: 6px 10px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.9rem; }
+    .program-section .timeline-date .zoom-link:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(0,0,0,0.08); }
 
     footer { background: linear-gradient(135deg, var(--azul-oscuro), var(--azul-medio)); color: var(--blanco); text-align: center; padding: 40px 20px; font-size: 1em; position: relative;}
     footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--celeste), var(--dorado));}
@@ -168,14 +169,14 @@
           <div class="timeline-date">
             <h4>24 Nov - 6:00 PM</h4>
             <p>Conferencia Magistral</p>
+            <h5 class="talk-title">Por anunciar a todos</h5>
+            <p><a class="zoom-link" href="#" target="_blank" rel="noopener noreferrer">Unirse por Zoom (por anunciar)</a></p>
           </div>
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <span class="modality-badge virtual"><i class="fas fa-globe"></i> Virtual</span>
             <h4>Construcción</h4>
             <div class="speaker">MBA. Ing. Edward García Mori </div>
-            <h5 class="talk-title">Por anunciar a todos</h5>
-            <p><a class="zoom-link" href="#" target="_blank" rel="noopener noreferrer">Unirse por Zoom (por anunciar)</a></p>
             <p>Decripción 1</p>
           </div>
         </div>
@@ -183,14 +184,14 @@
           <div class="timeline-date">
             <h4>24 Nov - 8:00 PM</h4>
             <p>Conferencia Magistral</p>
+            <h5 class="talk-title">Por anunciar a todos</h5>
+            <p><a class="zoom-link" href="#" target="_blank" rel="noopener noreferrer">Unirse por Zoom (por anunciar)</a></p>
           </div>
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <span class="modality-badge virtual"><i class="fas fa-globe"></i> Virtual</span>
             <h4>Vialidad</h4>
             <div class="speaker">Dr. Ing. Miguel Estrada Mendoza </div>
-            <h5 class="talk-title">Por anunciar a todos</h5>
-            <p><a class="zoom-link" href="#" target="_blank" rel="noopener noreferrer">Unirse por Zoom (por anunciar)</a></p>
             <p>Decripción 1</p>
           </div>
         </div>
@@ -198,14 +199,14 @@
           <div class="timeline-date">
             <h4>25 Nov - 6:00 PM</h4>
             <p>Conferencia Magistral</p>
+            <h5 class="talk-title">Por anunciar a todos</h5>
+            <p><a class="zoom-link" href="#" target="_blank" rel="noopener noreferrer">Unirse por Zoom (por anunciar)</a></p>
           </div>
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <span class="modality-badge virtual"><i class="fas fa-globe"></i> Virtual</span>
             <h4>Hidráulica</h4>
             <div class="speaker">Dra. Ing. Ada Arancibia Samaniego </div>
-            <h5 class="talk-title">Por anunciar a todos</h5>
-            <p><a class="zoom-link" href="#" target="_blank" rel="noopener noreferrer">Unirse por Zoom (por anunciar)</a></p>
             <p>Decripción 1</p>
           </div>
         </div>
@@ -213,14 +214,14 @@
           <div class="timeline-date">
             <h4>25 Nov - 8:00 PM</h4>
             <p>Conferencia Magistral</p>
+            <h5 class="talk-title">Por anunciar a todos</h5>
+            <p><a class="zoom-link" href="#" target="_blank" rel="noopener noreferrer">Unirse por Zoom (por anunciar)</a></p>
           </div>
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <span class="modality-badge virtual"><i class="fas fa-globe"></i> Virtual</span>
             <h4>Construcción</h4>
             <div class="speaker">Ing. Walter Melendez</div>
-            <h5 class="talk-title">Por anunciar a todos</h5>
-            <p><a class="zoom-link" href="#" target="_blank" rel="noopener noreferrer">Unirse por Zoom (por anunciar)</a></p>
             <p>Decripción 1</p>
           </div>
         </div>
@@ -228,14 +229,14 @@
           <div class="timeline-date">
             <h4>26 Nov - 6:00 PM</h4>
             <p>Conferencia Magistral</p>
+            <h5 class="talk-title">Por anunciar a todos</h5>
+            <p><a class="zoom-link" href="#" target="_blank" rel="noopener noreferrer">Unirse por Zoom (por anunciar)</a></p>
           </div>
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <span class="modality-badge virtual"><i class="fas fa-globe"></i> Virtual</span>
             <h4>Geotecnia</h4>
             <div class="speaker">Dr. Zenon Aguilar </div>
-            <h5 class="talk-title">Por anunciar a todos</h5>
-            <p><a class="zoom-link" href="#" target="_blank" rel="noopener noreferrer">Unirse por Zoom (por anunciar)</a></p>
             <p>Decripción 1</p>
           </div>
         </div>
@@ -244,14 +245,14 @@
           <div class="timeline-date">
             <h4>26 Nov - 8:00 PM</h4>
             <p>Conferencia Magistral</p>
+            <h5 class="talk-title">Por anunciar a todos</h5>
+            <p><a class="zoom-link" href="#" target="_blank" rel="noopener noreferrer">Unirse por Zoom (por anunciar)</a></p>
           </div>
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <span class="modality-badge virtual"><i class="fas fa-globe"></i> Virtual</span>
             <h4>Geoetecnia</h4>
             <div class="speaker">Ph. D Sebastián Lobo Guerrero</div>
-            <h5 class="talk-title">Por anunciar a todos</h5>
-            <p><a class="zoom-link" href="#" target="_blank" rel="noopener noreferrer">Unirse por Zoom (por anunciar)</a></p>
             <p>Ph. D Sebastián Lobo Guerrero es experto internacional en geotecnia y compartirá su experiencia en el CIDETIC 2025.</p>
           </div>
         </div>
@@ -259,14 +260,14 @@
           <div class="timeline-date">
             <h4>27 Nov - 4:00 PM</h4>
             <p>Conferencia Magistral</p>
+            <h5 class="talk-title">Por anunciar a todos</h5>
+            <p><a class="zoom-link" href="#" target="_blank" rel="noopener noreferrer">Unirse por Zoom (por anunciar)</a></p>
           </div>
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <span class="modality-badge virtual"><i class="fas fa-globe"></i> Virtual</span>
             <h4>Vialidad</h4>
             <div class="speaker">Ing. Lucas Vozzi</div>
-            <h5 class="talk-title">Por anunciar a todos</h5>
-            <p><a class="zoom-link" href="#" target="_blank" rel="noopener noreferrer">Unirse por Zoom (por anunciar)</a></p>
             <p>Ing. Lucas Vozzi es experto internacional en vialidad y compartirá su experiencia en el CIDETIC 2025.</p>
           </div>
         </div>
@@ -274,14 +275,14 @@
           <div class="timeline-date">
             <h4>27 Nov - 7:00 PM</h4>
             <p>Conferencia Magistral</p>
+            <h5 class="talk-title">Por anunciar a todos</h5>
+            <p><a class="zoom-link" href="#" target="_blank" rel="noopener noreferrer">Unirse por Zoom (por anunciar)</a></p>
           </div>
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <span class="modality-badge virtual"><i class="fas fa-globe"></i> Virtual</span>
             <h4>Estructuras</h4>
             <div class="speaker">Dr. Arq. Claudia Muñoz</div>
-            <h5 class="talk-title">Por anunciar a todos</h5>
-            <p><a class="zoom-link" href="#" target="_blank" rel="noopener noreferrer">Unirse por Zoom (por anunciar)</a></p>
             <p>Dr. Arq. Claudia Muñoz es experta internacional en estructuras y compartirá su experiencia en el CIDETIC 2025.</p>
           </div>
         </div>
@@ -289,14 +290,14 @@
            <div class="timeline-date">
              <h4>28 Nov - 6:00 PM</h4>
              <p>Conferencia Magistral</p>
+             <h5 class="talk-title">Por anunciar a todos</h5>
+             <p><a class="zoom-link" href="#" target="_blank" rel="noopener noreferrer">Unirse por Zoom (por anunciar)</a></p>
            </div>
            <div class="timeline-dot"></div>
            <div class="timeline-content">
              <span class="modality-badge virtual"><i class="fas fa-globe"></i> Virtual</span>
              <h4>Estructuras</h4>
              <div class="speaker">MSc. Ing. Joseph Jaramillo</div>
-             <h5 class="talk-title">Por anunciar a todos</h5>
-             <p><a class="zoom-link" href="#" target="_blank" rel="noopener noreferrer">Unirse por Zoom (por anunciar)</a></p>
              <p>CISMID</p>
            </div>
          </div>
