@@ -7,8 +7,38 @@
   <title>Ponentes - CIDETIC 2025 | Student Chapter ACI UNI</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-  
   <style>
+    /* Read-more styles */
+.speaker .desc {
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+  line-height: 1.5;
+  max-height: calc(1.5em * 4); /* muestra 4 líneas por defecto */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4; /* soporte principal en WebKit */
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+.speaker .desc.expanded {
+  /* cuando está expandido quitamos el recorte */
+  -webkit-line-clamp: unset;
+  display: block;
+  max-height: none;
+}
+.speaker .read-more {
+  background: none;
+  border: none;
+  color: var(--azul-claro);
+  font-weight: 700;
+  cursor: pointer;
+  padding: 6px 0;
+  margin-top: 8px;
+}
+.speaker .read-more:focus {
+  outline: 2px dashed rgba(96,165,250,0.5);
+  outline-offset: 2px;
+}
     :root {
       --azul-oscuro: #0A1F44;
       --azul-medio: #1E3A8A;
@@ -158,7 +188,7 @@
         <h3>Dr. Ing. Miguel Estrada Mendoza</h3>
         <span class="tag">Vialidad</span>
         <p><strong>Conferencia:</strong> Lunes 24 de noviembre, 8:00 PM</p>
-        <p>Ingeniero Civil por la Universidad Nacional de Ingeniería, Máster en Ciencias y PhD. en Ingeniería Civil por la Universidad de Tokio, Postdoctorado en la Universidad de Chiba, Japón y Grado de Doctor Honoris Causa otorgado por la Universidad Privada de Tacna. Ha ocupado los cargos de Ministro de Vivienda, Construcción y Saneamiento, Presidente Ejecutivo de Servicio Nacional de Capacitación para la Industria de la Construcción – SENCICO, Director General del Centro Peruano Japonés de Investigaciones Sísmicas y Mitigación de Desastres – CISMID, miembro del Directorio del Servicio de Agua Potable y Alcantarillado de Lima – SEDAPAL y del Directorio del Fondo Nacional de Financiamiento de la Actividad Empresarial del Estado – FONAFE, miembro titular del Comité de Investigación de Instituto de Investigación de la Facultad de Ingeniería Civil, Jefe del Departamento Académico de Vialidad y Geomática de la Facultad de Ingeniería Civil de la UNI, miembro del Consejo Directivo del Capítulo de Ingeniería Civil del Colegio de Ingenieros del Perú, Consejo Departamental de Lima. </p>
+        <p class="desc">Ingeniero Civil por la Universidad Nacional de Ingeniería, Máster en Ciencias y PhD. en Ingeniería Civil por la Universidad de Tokio, Postdoctorado en la Universidad de Chiba, Japón y Grado de Doctor Honoris Causa otorgado por la Universidad Privada de Tacna. Ha ocupado los cargos de Ministro de Vivienda, Construcción y Saneamiento, Presidente Ejecutivo de Servicio Nacional de Capacitación para la Industria de la Construcción – SENCICO, Director General del Centro Peruano Japonés de Investigaciones Sísmicas y Mitigación de Desastres – CISMID, miembro del Directorio del Servicio de Agua Potable y Alcantarillado de Lima – SEDAPAL y del Directorio del Fondo Nacional de Financiamiento de la Actividad Empresarial del Estado – FONAFE, miembro titular del Comité de Investigación de Instituto de Investigación de la Facultad de Ingeniería Civil, Jefe del Departamento Académico de Vialidad y Geomática de la Facultad de Ingeniería Civil de la UNI, miembro del Consejo Directivo del Capítulo de Ingeniería Civil del Colegio de Ingenieros del Perú, Consejo Departamental de Lima. </p>
       </div>
 
       <div class="speaker fade-in">
