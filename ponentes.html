@@ -1,431 +1,488 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <link rel="icon" type="image/png" href="assets/CIDELOGO.png">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ponentes - CIDETIC 2025 | Student Chapter ACI UNI</title>
+
+  <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
   <style>
-    /* Read-more styles */
-.speaker .desc {
-  overflow: hidden;
-  transition: max-height 0.35s ease;
-  line-height: 1.5;
-  max-height: calc(1.5em * 4); /* muestra 4 líneas por defecto */
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4; /* soporte principal en WebKit */
-  margin-bottom: 0.5rem;
-  text-align: left;
-}
-.speaker .desc.expanded {
-  /* cuando está expandido quitamos el recorte */
-  -webkit-line-clamp: unset;
-  display: block;
-  max-height: none;
-}
-.speaker .read-more {
-  background: none;
-  border: none;
-  color: var(--azul-claro);
-  font-weight: 700;
-  cursor: pointer;
-  padding: 6px 0;
-  margin-top: 8px;
-}
-.speaker .read-more:focus {
-  outline: 2px dashed rgba(96,165,250,0.5);
-  outline-offset: 2px;
-}
-    :root {
-      --azul-oscuro: #0A1F44;
-      --azul-medio: #1E3A8A;
-      --azul-claro: #3B82F6;
-      --blanco: #FFFFFF;
-      --gris-claro: #F8FAFC;
-      --gris-medio: #E2E8F0;
-      --celeste: #60A5FA;
-      --dorado: #F59E0B;
-      --sombra-suave: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      --sombra-hover: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    :root{
+      --azul-oscuro:#0A1F44;
+      --azul-medio:#1E3A8A;
+      --azul-claro:#3B82F6;
+      --celeste:#60A5FA;
+      --dorado:#F59E0B;
+      --blanco:#fff;
+      --gris:#F3F4F6;
+      --sombra-suave: 0 6px 18px rgba(10,31,68,0.06);
+      --sombra-hover: 0 12px 30px rgba(10,31,68,0.08);
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background: var(--blanco); color: var(--azul-oscuro); line-height: 1.6; overflow-x: hidden; }
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-    .fade-in { animation: fadeInUp 0.8s ease-out forwards; }
-    .navbar { position: fixed; top: 0; width: 100%; background: rgba(10, 31, 68, 0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 255, 255, 0.06); z-index: 1000; }
-    .navbar.scrolled { background: rgba(10, 31, 68, 0.98); padding: 8px 0; box-shadow: var(--sombra-suave); }
-    .nav-container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; position: relative; }
-    .menu-toggle { background: none; border: none; font-size: 2em; color: white; cursor: pointer; margin-right: 10px; order: 1; }
-    .nav-logo { display: flex; align-items: center; gap: 10px; order: 2; justify-content: center; flex: 1; }
-    .nav-menu { display: flex; gap: 30px; list-style: none; align-items: center; margin: 0; order: 3; flex: 2; justify-content: center; }
-    .nav-cta { display: flex; align-items: center; order: 4; margin-left: auto; }
-    .nav-logo img { height: 40px; width: auto; transition: transform 0.3s ease; }
-    .nav-logo:hover img { transform: scale(1.05); }
-    .nav-logo span { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.2em; color: var(--blanco); }
-    .nav-menu li a { color: var(--blanco); text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.3s ease; position: relative; display: flex; align-items: center; gap: 5px; padding: 8px 4px; }
-    .nav-menu li a::after { content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 2px; background: linear-gradient(90deg, var(--celeste), var(--dorado)); transition: all 0.3s ease; transform: translateX(-50%); }
-    .nav-menu li a:hover::after, .nav-menu li a.active::after { width: 100%; }
-    .nav-menu li a:hover { color: var(--celeste); }
-    .nav-menu li a.active { color: var(--celeste); }
-    .nav-cta .btn-cta { text-decoration: none; padding: 10px 20px; background: linear-gradient(135deg, var(--celeste), var(--dorado)); color: var(--blanco); border-radius: 25px; font-weight: 600; display: inline-flex; gap: 10px; align-items: center; }
-    .nav-cta .btn-cta:hover { transform: translateY(-2px); box-shadow: var(--sombra-hover); color: var(--blanco); }
-    .hero { min-height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 120px 20px 50px; background: linear-gradient(135deg, rgba(59,130,246,0.06), rgba(16,185,129,0.03)); position: relative; overflow: hidden; }
-    .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><linearGradient id="g" x1="0" x2="1"><stop stop-color="%2360A5FA" offset="0"/><stop stop-color="%23F59E0B" offset="1"/></linearGradient></defs><circle cx="80" cy="10" r="40" fill="url(%23g)" opacity="0.05"/></svg>') no-repeat center/cover; pointer-events: none; }
-    .hero h1 { font-family: 'Montserrat', sans-serif; font-size: 3em; font-weight: 700; margin-bottom: 20px; text-shadow: 0 2px 4px rgba(0,0,0,0.08); animation: fadeInUp 1s ease-out;}
-    .hero p { font-size: 1.3em; margin-bottom: 40px; max-width: 800px; opacity: 0.95; animation: fadeInUp 1s ease-out 0.2s both;}
-    .hero .btn { text-decoration: none; padding: 15px 35px; background: linear-gradient(135deg, var(--celeste), var(--dorado)); color: var(--blanco); border-radius: 50px; font-weight: 700; font-size: 1em; display: inline-block; position: relative; overflow: hidden; }
-    .hero .btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent); transition: left 0.5s ease; }
-    .hero .btn:hover::before { left: 100%; }
-    .hero .btn:hover { transform: translateY(-3px); box-shadow: var(--sombra-hover); color: var(--blanco);}
-    section { padding: 100px 20px; max-width: 1500px; margin: 0 auto; text-align: center;}
-    section h2 { font-family: 'Montserrat', sans-serif; font-size: 2.2em; margin-bottom: 30px; color: var(--azul-oscuro); position: relative;}
-    section h2::after { content: ''; display: block; width: 60px; height: 4px; background: linear-gradient(90deg, var(--celeste), var(--dorado)); margin: 10px auto; border-radius: 2px;}
-    section p { font-size: 1.2em; line-height: 1.8; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto; opacity: 0.9;}
-    .speakers { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 30px;}
-    .speaker { background: var(--blanco); border-radius: 18px; box-shadow: var(--sombra-suave); padding: 20px; transition: all 0.3s ease; text-align: center; position: relative; }
-    .speaker:hover { transform: translateY(-5px); box-shadow: var(--sombra-hover);}
-    .speaker img { width: 120px; height: 120px; border-radius: 50%; margin-bottom: 15px; border: 4px solid var(--celeste); transition: transform 0.3s ease; display: block; margin-left: auto; margin-right: auto; object-fit: cover; background: #f3f4f6; }
-    .speaker:hover img { transform: scale(1.05); }
-    .speaker h3 { font-family: 'Montserrat', sans-serif; margin-bottom: 10px; color: var(--azul-oscuro);}
-    .speaker .tag { display: inline-block; background: var(--celeste); color: var(--blanco); padding: 5px 12px; border-radius: 15px; font-size: 0.85em; font-weight: 600; margin: 10px auto 15px; text-align: center; }
-    .speaker p { font-size: 1em; color: var(--azul-medio); opacity: 0.8; text-align: center;}
-    .speaker .social-links { margin-top: 15px; text-align: center;}
-    .speaker .social-links a { color: var(--celeste); font-size: 1.2em; margin: 0 10px; transition: color 0.3s ease;}
-    .speaker .social-links a:hover { color: var(--dorado);}
-    footer { background: linear-gradient(135deg, var(--azul-oscuro), var(--azul-medio)); color: var(--blanco); text-align: center; padding: 40px 20px; font-size: 1em; position: relative;}
-    footer::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--celeste), var(--dorado));}
-    footer strong { color: var(--celeste); }
-    footer a { color: var(--celeste); text-decoration: none; transition: color 0.3s;}
-    footer a:hover { color: var(--dorado);}
-    @media (max-width: 900px) {
-      .nav-container { flex-wrap: nowrap; }
-      .nav-logo { flex: 1; justify-content: center; }
-      .nav-cta { margin-left: 0; }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',sans-serif;color:var(--azul-oscuro);background:var(--gris);line-height:1.5;overflow-x:hidden;}
+    a{color:inherit}
+
+    /* Navbar */
+    .navbar{position:fixed;top:0;left:0;right:0;background:rgba(10,31,68,0.94);backdrop-filter:blur(6px);padding:10px 0;z-index:1000}
+    .nav-container{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 20px;gap:12px;}
+    .nav-logo{display:flex;align-items:center;gap:10px;color:#fff;font-weight:700}
+    .nav-logo img{height:40px}
+    .nav-menu{display:flex;gap:18px;list-style:none;align-items:center}
+    .nav-menu a{color:#fff;text-decoration:none;font-weight:600}
+    .menu-toggle{display:none;background:none;border:none;color:#fff;font-size:1.4rem}
+
+    /* Hero */
+    .hero{padding:110px 20px 40px;text-align:center;background:linear-gradient(135deg, rgba(96,165,250,0.06), rgba(245,158,11,0.03));min-height:36vh;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:14px}
+    .hero h1{font-family:'Montserrat',sans-serif;font-size:2.4rem;color:var(--azul-oscuro)}
+    .hero p{max-width:900px;color:rgba(10,31,68,0.85)}
+    .hero .btn{display:inline-block;padding:12px 26px;border-radius:999px;background:linear-gradient(135deg,var(--celeste),var(--dorado));color:var(--blanco);text-decoration:none;font-weight:700}
+
+    /* Group / section */
+    .container { max-width:1200px; margin: 28px auto; padding: 0 20px; }
+    .intro { text-align:center; margin-bottom: 18px; color: rgba(10,31,68,0.85); }
+    .group { margin-top: 28px; background: #fff; border-radius: 12px; padding: 18px; box-shadow: var(--sombra-suave); }
+    .group-header { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom: 14px; }
+    .group-title { font-family:'Montserrat',sans-serif; font-size:1.25rem; color:var(--azul-oscuro); margin:0; }
+    .group-meta { display:flex; align-items:center; gap:10px; }
+    .group-count { font-weight:700; color:var(--azul-medio); opacity:0.95; }
+    .group-toggle { background:none; border:1px solid rgba(10,31,68,0.06); padding:6px 10px; border-radius:8px; cursor:pointer; font-weight:700; color:var(--azul-medio); }
+
+    /* Speakers grid & card */
+    .speakers-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap:18px; }
+    .speaker { background: linear-gradient(180deg, #fff, #fbfbfc); border-radius:12px; padding:14px; display:flex; gap:14px; align-items:flex-start; transition:transform .18s ease,box-shadow .18s ease; border:1px solid rgba(10,31,68,0.03); }
+    .speaker:hover { transform: translateY(-6px); box-shadow: var(--sombra-hover); }
+
+    .speaker .avatar { flex: 0 0 96px; width:96px; height:96px; border-radius:12px; overflow:hidden; border:3px solid var(--celeste); }
+    .speaker .avatar img { width:100%; height:100%; object-fit:cover; display:block; }
+
+    .speaker .info { flex:1; min-width:0; }
+    .speaker h3 { font-family:'Montserrat',sans-serif; font-size:1.02rem; margin:0 0 6px; color:var(--azul-oscuro); }
+    .speaker .tag { display:inline-block; background:var(--celeste); color:var(--blanco); padding:6px 10px; border-radius:999px; font-weight:700; font-size:0.78rem; margin-bottom:8px; }
+    .speaker .meta { display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin:6px 0; color:var(--azul-medio); font-size:0.95rem; }
+    .speaker .meta .time { background:rgba(59,130,246,0.06); padding:4px 8px; border-radius:8px; font-weight:600; color:var(--azul-medio); }
+    .speaker .meta .aff { font-style:italic; opacity:0.9; font-size:0.92rem; }
+
+    .speaker .desc { margin-top:8px; color:var(--azul-medio); font-size:0.95rem; line-height:1.45; text-align:left; overflow:hidden; display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:4; transition:max-height .25s ease; }
+    .speaker .desc.expanded { -webkit-line-clamp:unset; display:block; }
+
+    .speaker .extra { margin-top:10px; display:flex; justify-content:flex-start; gap:10px; align-items:center; flex-wrap:wrap; }
+    .speaker .topics { background: #f1f5f9; padding:6px 10px; border-radius:8px; color:var(--azul-oscuro); font-weight:600; font-size:0.85rem; }
+    .speaker .social-links a { color:var(--azul-claro); font-size:1.05rem; margin-right:8px; text-decoration:none; }
+    .read-more { background:none; border:none; color:var(--azul-claro); font-weight:700; cursor:pointer; padding:6px 0; }
+
+    /* Footer */
+    footer{padding:28px 20px;text-align:center;background:linear-gradient(135deg,var(--azul-oscuro),var(--azul-medio));color:#fff;margin-top:28px;border-top-left-radius:12px;border-top-right-radius:12px}
+
+    /* Small screens */
+    @media (max-width:720px){
+      .speaker { flex-direction:row; }
+      .speaker .avatar { width:84px; height:84px; }
+      .group { padding:12px; }
+      .hero h1 { font-size:1.8rem; }
+      .menu-toggle { display:block; }
+      .nav-menu { display:none; }
     }
-    @media (max-width: 768px) {
-      .nav-container { flex-direction: row; align-items: center; justify-content: space-between; }
-      .menu-toggle { display: block; order: 1; }
-      .nav-logo { order: 2; flex: 1; justify-content: center; }
-      .nav-cta { order: 4; margin-left: auto; }
-      .nav-menu {
-        display: none;
-        flex-direction: column;
-        gap: 10px;
-        position: absolute;
-        top: 56px;
-        left: 0;
-        width: 100vw;
-        background: rgba(10,31,68,0.98);
-        box-shadow: var(--sombra-suave);
-        z-index: 999;
-        padding: 20px 0;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-        border-top: 1px solid rgba(255,255,255,0.1);
-      }
-      .nav-menu.active { display: flex; }
-      .nav-menu li a i { display: none; }
-      .hero { padding: 120px 20px 40px; min-height: 50vh; }
-      .speakers { grid-template-columns: 1fr; gap: 20px; }
-    }
-    @media (max-width: 480px) {
-      .nav-menu { gap: 15px; }
-      .hero h1 { font-size: 2em; }
-      .hero .btn { padding: 12px 25px; font-size: 1em; }
-      .nav-cta .btn-cta { padding: 8px 16px; font-size: 0.9em; }
+    @media (max-width:420px){
+      .speaker { gap:10px; }
+      .speaker .avatar { width:72px; height:72px; border-radius:10px; }
+      .speakers-grid { gap:14px; }
     }
   </style>
 </head>
 <body>
   <!-- Navbar -->
-  <nav class="navbar">
+  <nav class="navbar" role="navigation" aria-label="Principal">
     <div class="nav-container">
       <button class="menu-toggle" aria-label="Abrir menú"><i class="fas fa-bars"></i></button>
       <div class="nav-logo">
         <img src="assets/logo-aci-uni.png" alt="ACI UNI Logo">
-        <span>CIDETIC 2025</span>
+        <span style="color:#fff">CIDETIC 2025</span>
       </div>
-      <ul class="nav-menu">
-        <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
-        <li><a href="programa.html"><i class="fas fa-calendar-alt"></i> Programa</a></li>
-        <li><a href="ponentes.html" class="active"><i class="fas fa-users"></i> Ponentes</a></li>
-        <li><a href="inscripciones.html"><i class="fas fa-user-plus"></i> Inscripciones</a></li>
-        <li><a href="contacto.html"><i class="fas fa-envelope"></i> Contacto</a></li>
+      <ul class="nav-menu" role="menubar">
+        <li role="none"><a role="menuitem" href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+        <li role="none"><a role="menuitem" href="programa.html"><i class="fas fa-calendar-alt"></i> Programa</a></li>
+        <li role="none"><a role="menuitem" class="active" href="ponentes.html"><i class="fas fa-users"></i> Ponentes</a></li>
+        <li role="none"><a role="menuitem" href="inscripciones.html"><i class="fas fa-user-plus"></i> Inscripciones</a></li>
+        <li role="none"><a role="menuitem" href="contacto.html"><i class="fas fa-envelope"></i> Contacto</a></li>
       </ul>
       <div class="nav-cta">
-        <a href="inscripciones.html" class="btn-cta"><i class="fas fa-user-plus"></i> Regístrate</a>
+        <a class="btn" href="inscripciones.html"><i class="fas fa-user-plus"></i> Regístrate</a>
       </div>
     </div>
   </nav>
 
   <!-- Hero -->
-  <section class="hero">
-    <h1>Ponentes Destacados</h1>
-    <p>Expertos internacionales y locales compartirán su conocimiento en innovación y tecnología aplicada a la ingeniería civil.<br><strong>¡No te pierdas sus conferencias!</strong></p>
-    <a href="inscripciones.html" class="btn"><i class="fas fa-user-plus"></i> Inscríbete para Escucharlos</a>
+  <section class="hero" aria-labelledby="hero-title">
+    <h1 id="hero-title">Ponentes Destacados</h1>
+    <p>Expertos internacionales y locales compartirán su conocimiento en innovación y tecnología aplicada a la ingeniería civil. <strong>¡No te pierdas sus conferencias!</strong></p>
+    <a class="btn" href="inscripciones.html"><i class="fas fa-user-plus"></i> Inscríbete</a>
   </section>
 
-  <!-- Sección de Ponentes -->
-  <section id="speakers" class="fade-in">
-    <h2><center>Conoce a Nuestros Ponentes</center></h2>
-    <p>Seleccionados por su experiencia y contribuciones al campo de la ingeniería civil.</p>
-    <div class="speakers">
-      <!-- Ponente agregado -->
-      
-      <div class="speaker fade-in">
-        <img src="assets/ponentes/mori.jpg" alt="MBA GARCIA MORI">
-        <h3>MBA. Ing. Edward García Mori</h3>
-        <span class="tag">Construcción</span>
-        <p><strong>Conferencia:</strong> Lunes 24 de noviembre, 6:00 PM</p>
-        <p class="desc">MBA de ESAN – Especialización en Finanzas Corporativas. Ingeniero Civil Titulado y Colegiado de la Universidad Nacional de Ingeniería. Inglés a nivel avanzado. Más de 10 años de experiencia en Gestión de empresas como Gerente General. Conocimiento de Gestión Pública. Experiencia como Ingeniero Residente de Obra. Docente Universitario. Conocimiento de temas en Gestión de Proyectos.</p>
-      </div>
-
-      <div class="speaker fade-in">
-        <img src="assets/ponentes/Estrada.jpg" alt="Decano FIC UNI">
-        <h3>Dr. Ing. Miguel Estrada Mendoza</h3>
-        <span class="tag">Vialidad</span>
-        <p><strong>Conferencia:</strong> Lunes 24 de noviembre, 8:00 PM</p>
-        <p class="desc">Ingeniero Civil por la Universidad Nacional de Ingeniería, Máster en Ciencias y PhD. en Ingeniería Civil por la Universidad de Tokio, Postdoctorado en la Universidad de Chiba, Japón y Grado de Doctor Honoris Causa otorgado por la Universidad Privada de Tacna. Ha ocupado los cargos de Ministro de Vivienda, Construcción y Saneamiento, Presidente Ejecutivo de Servicio Nacional de Capacitación para la Industria de la Construcción – SENCICO, Director General del Centro Peruano Japonés de Investigaciones Sísmicas y Mitigación de Desastres – CISMID, miembro del Directorio del Servicio de Agua Potable y Alcantarillado de Lima – SEDAPAL y del Directorio del Fondo Nacional de Financiamiento de la Actividad Empresarial del Estado – FONAFE, miembro titular del Comité de Investigación de Instituto de Investigación de la Facultad de Ingeniería Civil, Jefe del Departamento Académico de Vialidad y Geomática de la Facultad de Ingeniería Civil de la UNI, miembro del Consejo Directivo del Capítulo de Ingeniería Civil del Colegio de Ingenieros del Perú, Consejo Departamental de Lima. </p>
-      </div>
-
-      <div class="speaker fade-in">
-        <img src="assets/ponentes/ada.jpg" alt="Dra. ADA">
-        <h3>Dra. Ing. Ada Arancibia Samaniego</h3>
-        <span class="tag">Hidráulica</span>
-        <p><strong>Conferencia:</strong> Martes 25 de noviembre, 6:00 PM</p>
-        <p class="desc">Como parte de un equipo interdisciplinario, participó en la implementación de diversos estudios de hidráulica, saneamiento, medio ambiente e infraestructura. Compartió la responsabilidad de implementar las mejores prácticas de gestión de proyectos, incluyendo el diseño de diversas estructuras hidráulicas y defensas fluviales, defensas contra la erosión hídrica en puentes, subdrenaje en carreteras, sistemas de drenaje, cálculo de caudales de inundación y balance hídrico, y estudios de flujos de escombros en arroyos. Además, gestionó la implementación del Plan de Calidad de los Servicios.</p>
-      </div>
-
-      <div class="speaker fade-in">
-        <img src="assets/ponentes/walter.jpeg" alt="Ing. Walter Melendez">
-        <h3>Ing. Walter Melendez</h3>
-        <span class="tag">Construcción</span>
-        <p><strong>Conferencia:</strong> Martes 25 de noviembre, 8:00 PM</p>
-        <p class="desc">Ingeniero civil UNI, Magister en Administración de la Construcción, PUC de Chile, colegiado, certificación en Virtual Design & Construction, Universidad de Stanford, California, USA. Especialización en dirección, gerencia de proyectos y negocios en ESAN, UDEP. Profesional con 16 años de experiencia profesional en importantes proyectos de construcción en Chile y Perú, especialista en gestión de proyectos, productividad, sostenibilidad e innovación en la construcción. Profesional pro activo de espíritu emprendedor, innovador, consolidadas habilidades blandas, trabajo integrador y orientado a resultados.</p>
-      </div>
-
-      <div class="speaker fade-in">
-        <img src="assets/ponentes/zenon.jpg" alt="Dr. Zenon Aguilar">
-        <h3>Dr. Zenon Aguilar</h3>
-        <span class="tag">Geotecnia</span> 
-        <p><strong>Conferencia:</strong> Miércoles 26 de noviembre, 6:00 PM</p>
-        <p class="desc">Doctor en Ingeniería, Especialista en Ingeniería Geotécnica. Profesor Principal de la Facultad de Ingeniería Civil de la UNI. Investigador Asociado del Centro Peruano Japonés de Investigaciones Sísmicas y Mitigación de Desastres de la Facultad de Ingeniería Civil de la UNI (CISMID-FIC-UNI). Consultor en cimentaciones superficiales y profundas, evaluación de peligro sísmico, diseño de presas de tierra, depósitos de relave y prospección sísmica en obras de ingeniería. Miembro de la Red Acelerográfica del CISMID. Miembro de la ASCE. Gerente General de ZER Geosystem Perú S. A. C – Ingeniería Geotécnica. Gerente Técnico de MARJENT Engineering Lab. SAC.</p>
-      </div>
-      
-      <div class="speaker fade-in">
-        <img src="assets/ponentes/lobo.png" alt="Ph. D Sebastián Lobo Guerrero">
-        <h3>Ph. D Sebastián Lobo Guerrero</h3>
-        <span class="tag">Geotecnia</span>
-        <p><strong>Conferencia:</strong> Miércoles 26 de noviembre, 8:00 PM</p>
-        <p class="desc">Ph. D Sebastián Lobo Guerrero es experto internacional en geotecnia y compartirá su experiencia en el CIDETIC 2025.</p>
-      </div>
-
-      <div class="speaker fade-in">
-        <img src="assets/ponentes/Vozzi.jpg" alt="Ing. Lucas Vozzi">
-        <h3>Ing. Lucas Vozzi</h3>
-        <span class="tag">Vialidad</span>
-        <p><strong>Conferencia:</strong> Jueves 27 de noviembre, 12:00 PM</p>
-        <p class="desc">El Ing. Luis Vozzi es Gerente Técnico de Tráfico en IETSA desde 2018, con amplia experiencia en transporte, simulación y planificación de sistemas de movilidad. Lidera el uso y capacitación de los principales softwares de simulación PTV (Visum, Vissim, Viswalk y Vistro), brindando asistencia técnica en licitaciones, consultorías y proyectos especializados en América Latina. Ha participado en estudios ferroviarios de gran escala, como el análisis del potencial de captación de cargas del sistema ferroviario argentino y el proyecto ejecutivo del desvío ferroviario de trocha angosta en Timbúes, desarrollado para COFCO International y la Asociación de Cooperativas Argentinas. Además, ha supervisado obras de infraestructura ferroviaria —como drenajes, pasos a nivel y enrieladuras— y ha trabajado como consultor en sistemas de información geográfica (SIG), desarrollando mapas y bases de datos georreferenciadas para la planificación y optimización del transporte multimodal.</p>
-      </div>
-
-      <!-- Dra. Arq. Claudia Muñoz - Materiales/Estructuras -->
-      <div class="speaker fade-in">
-        <img src="assets/ponentes/claudia.png" alt="Dra. Arq. Claudia Muñoz">
-        <h3>Dra. Arq. Claudia Muñoz</h3>
-        <span class="tag">Materiales</span>
-        <p><strong>Conferencia:</strong> Jueves 27 de noviembre, 3:00 PM</p>
-        <p class="desc">La Dra. Arq. Claudia Muñoz es Profesora Titular – Facultad de Arquitectura, Construcción y Diseño UBB | Investigadora en Construcción Sustentable &amp; 3D Printing | Impulsora de Innovación y descarbonización en tecnologías de la construcción I+D+i</p>
-        <div class="social-links">
-          <!-- Enlaces de ejemplo (modificar si se proporcionan reales) -->
-          <a href="#" target="_blank" aria-label="Facebook de Claudia Muñoz"><i class="fab fa-facebook"></i></a>
-          <a href="#" target="_blank" aria-label="Twitter de Claudia Muñoz"><i class="fab fa-x-twitter"></i></a>
-          <a href="#" target="_blank" aria-label="LinkedIn de Claudia Muñoz"><i class="fab fa-linkedin"></i></a>
-        </div>
-      </div>
-
-      <!-- Ing. Lucas Vozzi - Vialidad -->
-      <div class="speaker fade-in">
-        <img src="assets/ponentes/J.Jaramillo.jpg" alt="Ing. Lucas Vozzi">
-        <h3>MSc. Ing. Joseph Jaramillo</h3>
-        <span class="tag">Estructuras</span>
-        <p><strong>Conferencia:</strong> Viernes 28 de noviembre, 4:00 PM</p>
-        <p class = "desc">El Ing. Joseph Jaramillo del Águila es Ingeniero Civil por la Universidad Nacional de Ingeniería (UNI) y Maestro en Gestión de Desastres por el National Graduate Institute for Policy Studies (GRIPS) de Tokio, Japón. Se ha especializado en análisis sísmico, gestión del riesgo y aplicación de inteligencia artificial al estudio de estructuras, con formación complementaria en Machine Learning y Python en el MIT y el CTIC-UNI. Ha trabajado en el CISMID, participando en el desarrollo del software DAMARIS para la estimación de pérdidas por terremotos y tsunamis, y como investigador del proyecto internacional SATREPS (2021–2026), orientado al desarrollo de sistemas expertos para la evaluación del daño estructural en Lima Metropolitana. Cuenta con publicaciones en revistas como el Journal of Disaster Research y TECNIA, destacando su aporte a la ingeniería sísmica y a la innovación tecnológica en la gestión del riesgo de desastres.</p>
-        <div class="social-links">
-          <!-- Enlaces de ejemplo (modificar si se proporcionan reales) -->
-          <a href="#" target="_blank" aria-label="Facebook de Lucas Vozzi"><i class="fab fa-facebook"></i></a>
-          <a href="#" target="_blank" aria-label="Twitter de Lucas Vozzi"><i class="fab fa-x-twitter"></i></a>
-          <a href="#" target="_blank" aria-label="LinkedIn de Lucas Vozzi"><i class="fab fa-linkedin"></i></a>
-        </div>
-      </div>
-
-      <!-- Ejemplo de ponente, los demás igual -->
-      <div class="speaker fade-in">
-        <img src="images/ponentes/secret1.jpg" alt="Top Secret">
-        <h3>Próximamente</h3>
-        <span class="tag">Materiales</span>
-        <p>Top Secret</p>
-        <div class="social-links">
-          <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
-          <a href="https://x.com/" target="_blank"><i class="fab fa-x-twitter"></i></a>
-          <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
-          <a href="https://linkedin.com/in/" target="_blank"><i class="fab fa-linkedin"></i></a>
-        </div>
-      </div>
-      
-      <div class="speaker fade-in">
-        <img src="images/ponentes/secret1.jpg" alt="Top Secret">
-        <h3>Próximamente</h3>
-        <span class="tag">Materiales</span>
-        <p>Top Secret</p>
-        <div class="social-links">
-          <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
-          <a href="https://x.com/" target="_blank"><i class="fab fa-x-twitter"></i></a>
-          <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
-          <a href="https://linkedin.com/in/" target="_blank"><i class="fab fa-linkedin"></i></a>
-        </div>
-      </div>
-      
-
-      <!-- ... (resto de ponentes igual que el snippet) ... -->
+  <main class="container" id="speakers">
+    <div class="intro">
+      <h2 style="font-family:Montserrat, sans-serif; margin-bottom:8px">Conoce a Nuestros Ponentes</h2>
+      <p>Seleccionados por su experiencia y contribuciones al campo de la ingeniería civil. Usa los botones de cada sección para ocultar o mostrar grupos.</p>
     </div>
-  </section>
 
-  <!-- Footer -->
+    <!-- Lista original (se conservaron las descripciones completas) -->
+    <div id="speakers-list" style="display:none;">
+      <!-- Edward García Mori -->
+      <article class="speaker">
+        <div class="avatar"><img src="assets/ponentes/mori.jpg" alt="MBA. Ing. Edward García Mori"></div>
+        <div class="info">
+          <h3>MBA. Ing. Edward García Mori</h3>
+          <div class="tag">Construcción</div>
+          <div class="meta">
+            <div class="time"><i class="fas fa-calendar-alt"></i>&nbsp;Lun 24 • 18:00</div>
+            <div class="aff">MBA (ESAN) • Ing. Civil (UNI)</div>
+          </div>
+          <p class="desc">MBA de ESAN – Especialización en Finanzas Corporativas. Ingeniero Civil Titulado y Colegiado de la Universidad Nacional de Ingeniería. Inglés a nivel avanzado. Más de 10 años gestionando proyectos de infraestructura, con énfasis en control de costos y optimización financiera en obras a gran escala.</p>
+          <div class="extra">
+            <div class="topics">Gestión financiera</div>
+            <div class="topics">Control de obra</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Miguel Estrada Mendoza -->
+      <article class="speaker">
+        <div class="avatar"><img src="assets/ponentes/Estrada.jpg" alt="Dr. Ing. Miguel Estrada Mendoza"></div>
+        <div class="info">
+          <h3>Dr. Ing. Miguel Estrada Mendoza</h3>
+          <div class="tag">Vialidad</div>
+          <div class="meta">
+            <div class="time"><i class="fas fa-calendar-alt"></i>&nbsp;Lun 24 • 20:00</div>
+            <div class="aff">PhD. Ingeniería Civil (UNI) • Universidad de Tokio </div>
+          </div>
+          <p class="desc">Ingeniero Civil por la Universidad Nacional de Ingeniería (UNI), con Maestría en Ciencias y Doctorado en Ingeniería Civil por la Universidad de Tokio, además de un Postdoctorado en la Universidad de Chiba, Japón. Ha recibido el grado de Doctor Honoris Causa otorgado por la Universidad Privada de Tacna.</p>
+          <div class="extra">
+            <div class="topics">Planificación vial</div>
+            <div class="topics">Infraestructura resiliente</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Ada Arancibia -->
+      <article class="speaker">
+        <div class="avatar"><img src="assets/ponentes/ada.jpg" alt="Dra. Ing. Ada Arancibia Samaniego"></div>
+        <div class="info">
+          <h3>Dra. Ing. Ada Arancibia Samaniego</h3>
+          <div class="tag">Hidráulica</div>
+          <div class="meta">
+            <div class="time"><i class="fas fa-calendar-alt"></i>&nbsp;Mar 25 • 18:00</div>
+            <div class="aff">Especialista en hidráulica y saneamiento</div>
+          </div>
+          <p class="desc">Como parte de un equipo interdisciplinario, participó en la implementación de diversos estudios de hidráulica, saneamiento, medio ambiente e infraestructura. Compartirá enfoques integrados para la gestión hídrica y el diseño sostenible de cuencas urbanas.</p>
+          <div class="extra">
+            <div class="topics">Gestión hídrica</div>
+            <div class="topics">Saneamiento</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Walter Melendez -->
+      <article class="speaker">
+        <div class="avatar"><img src="assets/ponentes/walter.jpeg" alt="Ing. Walter Melendez"></div>
+        <div class="info">
+          <h3>Ing. Walter Melendez</h3>
+          <div class="tag">Construcción</div>
+          <div class="meta">
+            <div class="time"><i class="fas fa-calendar-alt"></i>&nbsp;Mar 25 • 20:00</div>
+            <div class="aff">Mag. Administración de la Construcción • PUC</div>
+          </div>
+          <p class="desc">Ingeniero civil UNI, Magister en Administración de la Construcción, PUC de Chile, colegiado, certificación en Virtual Design & Construction (VDC) por Stanford. Experto en coordinación BIM y tecnologías para optimizar la ejecución de obras.</p>
+          <div class="extra">
+            <div class="topics">VDC / BIM</div>
+            <div class="topics">Gestión de proyectos</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Dr. Zenon Aguilar -->
+      <article class="speaker">
+        <div class="avatar"><img src="assets/ponentes/zenon.jpg" alt="Dr. Zenon Aguilar"></div>
+        <div class="info">
+          <h3>Dr. Zenon Aguilar</h3>
+          <div class="tag">Geotecnia</div>
+          <div class="meta">
+            <div class="time"><i class="fas fa-calendar-alt"></i>&nbsp;Mié 26 • 18:00</div>
+            <div class="aff">Profesor • Facultad de Ingeniería Civil - UNI</div>
+          </div>
+          <p class="desc">Doctor en Ingeniería, Especialista en Ingeniería Geotécnica. Profesor Principal de la Facultad de Ingeniería Civil de la UNI. Investigador asociado del Centro Peruano... Presentará casos de estudio en mecánica de suelos y soluciones de cimentación para terrenos complejos.</p>
+          <div class="extra">
+            <div class="topics">Mecánica de suelos</div>
+            <div class="topics">Cimentaciones</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Ph. D Sebastián Lobo Guerrero -->
+      <article class="speaker">
+        <div class="avatar"><img src="assets/ponentes/lobo.png" alt="Ph. D Sebastián Lobo Guerrero"></div>
+        <div class="info">
+          <h3>Ph. D Sebastián Lobo Guerrero</h3>
+          <div class="tag">Geotecnia</div>
+          <div class="meta">
+            <div class="time"><i class="fas fa-calendar-alt"></i>&nbsp;Mié 26 • 20:00</div>
+            <div class="aff">Investigador / Consultor internacional</div>
+          </div>
+          <p class="desc">Sebastián Lobo-Guerrero, Ph.D., P.E., BC.GE. es gerente de Proyectos Geotécnicos y gerente de Laboratorio en American Geotechnical & Environmental Services (A.G.E.S.), en Pittsburgh, Pensilvania (EE. UU.). Cuenta con 24 años de experiencia profesional en el campo de la geotecnia y se desempeña además como profesor en la Universidad de Pittsburgh.</p>
+          <div class="extra">
+            <div class="topics">Estabilidad de taludes</div>
+            <div class="topics">Mitigación de riesgos</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Ing. Lucas Vozzi -->
+      <article class="speaker">
+        <div class="avatar"><img src="assets/ponentes/Vozzi.jpg" alt="Ing. Lucas Vozzi"></div>
+        <div class="info">
+          <h3>Ing. Lucas Vozzi</h3>
+          <div class="tag">Vialidad</div>
+          <div class="meta">
+            <div class="time"><i class="fas fa-calendar-alt"></i>&nbsp;Jue 27 • 12:00</div>
+            <div class="aff">Gerente Técnico de Tráfico • IETSA</div>
+          </div>
+          <p class="desc">El Ing. Luis Vozzi es Gerente Técnico de Tráfico en IETSA desde 2018, con amplia experiencia en transporte, simulación y planificación de sistemas de movilidad. Lidera proyectos de mejora del flujo vehicular y seguridad vial.</p>
+          <div class="extra">
+            <div class="topics">Simulación de tráfico</div>
+            <div class="topics">Planificación urbana</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Dra. Arq. Claudia Muñoz -->
+      <article class="speaker">
+        <div class="avatar"><img src="assets/ponentes/claudia.png" alt="Dra. Arq. Claudia Muñoz"></div>
+        <div class="info">
+          <h3>Dra. Arq. Claudia Muñoz</h3>
+          <div class="tag">Materiales</div>
+          <div class="meta">
+            <div class="time"><i class="fas fa-calendar-alt"></i>&nbsp;Jue 27 • 15:00</div>
+            <div class="aff">Profesora Titular • UBB</div>
+          </div>
+          <p class="desc">La Dra. Arq. Claudia Muñoz es Profesora Titular – Facultad de Arquitectura, Construcción y Diseño UBB. Investigadora en construcción sustentable y 3D printing aplicado a materiales. Traerá ejemplos y resultados experimentales de impresión por capas en obras reales.</p>
+          <div class="extra">
+            <div class="topics">Construcción sustentable</div>
+            <div class="topics">3D Printing</div>
+          </div>
+          <div class="social-links" aria-hidden="false" style="margin-top:8px">
+            <a href="#" target="_blank" aria-label="Facebook de Claudia Muñoz"><i class="fab fa-facebook"></i></a>
+            <a href="#" target="_blank" aria-label="Twitter de Claudia Muñoz"><i class="fab fa-x-twitter"></i></a>
+            <a href="#" target="_blank" aria-label="LinkedIn de Claudia Muñoz"><i class="fab fa-linkedin"></i></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- MSc. Ing. Joseph Jaramillo -->
+      <article class="speaker">
+        <div class="avatar"><img src="assets/ponentes/J.Jaramillo.jpg" alt="MSc. Ing. Joseph Jaramillo"></div>
+        <div class="info">
+          <h3>MSc. Ing. Joseph Jaramillo</h3>
+          <div class="tag">Estructuras</div>
+          <div class="meta">
+            <div class="time"><i class="fas fa-calendar-alt"></i>&nbsp;Vie 28 • 16:00</div>
+            <div class="aff">Maestro en Gestión de Desastres</div>
+          </div>
+          <p class="desc">El Ing. Joseph Jaramillo del Águila es Ingeniero Civil por la Universidad Nacional de Ingeniería (UNI) y Maestro en Gestión de Desastres por el National Graduate Institute. Sus charlas abordan diseño estructural con criterios de resiliencia y mitigación ante eventos extremos.</p>
+          <div class="extra">
+            <div class="topics">Diseño resiliente</div>
+            <div class="topics">Gestión de riesgos</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Próximamente -->
+      <article class="speaker">
+        <div class="avatar"><img src="images/ponentes/secret1.jpg" alt="Próximamente"></div>
+        <div class="info">
+          <h3>Próximamente</h3>
+          <div class="tag">Materiales</div>
+          <div class="meta">
+            <div class="aff">Anunciaremos nuevos ponentes</div>
+          </div>
+          <p class="desc">Estamos confirmando más expertos para completar el programa. Mantente atento a las actualizaciones.</p>
+        </div>
+      </article>
+    </div>
+
+    <!-- Contenedor destino donde se crearán las secciones por categoría -->
+    <div id="speakers-groups" aria-live="polite"></div>
+  </main>
+
   <footer>
-    Organizado por el <strong>Student Chapter ACI UNI</strong> | © 2025 Todos los derechos reservados | <a href="mailto:aci@uni.edu.pe">aci@uni.edu.pe</a>
+    Organizado por el <strong>Student Chapter ACI UNI</strong> | © 2025 | <a href="mailto:aci@uni.edu.pe" style="color:#fff;text-decoration:underline">aci@uni.edu.pe</a>
   </footer>
 
+  <!-- Minimal mobile menu toggle -->
   <script>
-    // Efecto scroll para navbar
-    window.addEventListener('scroll', () => {
-      const nav = document.querySelector('.navbar');
-      if (window.scrollY > 50) {
-        nav.classList.add('scrolled');
-      } else {
-        nav.classList.remove('scrolled');
-      }
-    });
-
-    // Hamburguesa para menú móvil
-    document.querySelector('.menu-toggle').addEventListener('click', function() {
-      document.querySelector('.nav-menu').classList.toggle('active');
-    });
-
-    // Smooth scroll para enlaces internos
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-      });
+    document.querySelector('.menu-toggle')?.addEventListener('click', () => {
+      const menu = document.querySelector('.nav-menu');
+      if (!menu) return;
+      menu.style.display = (menu.style.display === 'flex') ? 'none' : 'flex';
+      menu.style.flexDirection = 'column';
+      menu.style.background = 'rgba(10,31,68,0.97)';
+      menu.style.padding = '10px';
+      menu.style.borderRadius = '8px';
     });
   </script>
+
+  <!-- Read-more functionality (keeps full descriptions, adds toggle) -->
   <script>
-(function() {
-  const LINES = 4;
+    (function(){
+      const LINES = 4;
+      function px(v){return parseFloat(v||'0')}
+      function setupReadMore() {
+        document.querySelectorAll('.speaker .desc').forEach(desc => {
+          // reset
+          desc.classList.remove('expanded');
+          desc.style.maxHeight = 'none';
+          const full = desc.scrollHeight;
+          const cs = window.getComputedStyle(desc);
+          let lh = px(cs.lineHeight);
+          if (!lh || lh === 0) lh = px(cs.fontSize) * 1.4;
+          const collapsed = Math.round(lh * LINES);
 
-  function pxToNumber(px) {
-    return parseFloat(px || '0');
-  }
+          if (full <= collapsed + 3) {
+            desc.style.maxHeight = 'none';
+            return;
+          }
 
-  function setupReadMore() {
-    document.querySelectorAll('.speaker .desc').forEach(desc => {
-      // Ensure we start collapsed (use CSS clamp)
-      desc.classList.remove('expanded');
+          desc.style.maxHeight = collapsed + 'px';
+          desc.dataset.full = full;
+          desc.dataset.collapsed = collapsed;
 
-      // Measure full height by temporarily removing clamp styles
-      const prevDisplay = desc.style.display;
-      desc.style.display = 'block';
-      desc.style.webkitLineClamp = 'unset';
-      desc.style.maxHeight = 'none';
-      const fullHeight = desc.scrollHeight;
-      // restore
-      desc.style.display = prevDisplay || '';
-      // compute approx collapsed height (line-height * LINES)
-      const cs = window.getComputedStyle(desc);
-      let lh = pxToNumber(cs.lineHeight);
-      if (!lh || lh === 0) {
-        const fontSize = pxToNumber(cs.fontSize) || 16;
-        lh = fontSize * 1.2;
+          // create button if not already present
+          if (!desc._btn) {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'read-more';
+            btn.textContent = 'Ver más';
+            btn.setAttribute('aria-expanded', 'false');
+
+            btn.addEventListener('click', () => {
+              const expanded = desc.classList.toggle('expanded');
+              if (expanded) {
+                desc.style.maxHeight = desc.dataset.full + 'px';
+                btn.textContent = 'Ver menos';
+                btn.setAttribute('aria-expanded', 'true');
+              } else {
+                desc.style.maxHeight = desc.dataset.collapsed + 'px';
+                btn.textContent = 'Ver más';
+                btn.setAttribute('aria-expanded', 'false');
+              }
+            });
+
+            desc.insertAdjacentElement('afterend', btn);
+            desc._btn = btn;
+          }
+        });
       }
-      const collapsedHeight = Math.round(lh * LINES);
-
-      // If text is short, no button needed
-      if (fullHeight <= collapsedHeight + 2) {
-        return;
-      }
-
-      // apply explicit max-height for smooth transition
-      desc.style.maxHeight = collapsedHeight + 'px';
-      desc.dataset.collapsedHeight = collapsedHeight;
-      desc.dataset.fullHeight = fullHeight;
-
-      // create button
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'read-more';
-      btn.textContent = 'Ver más';
-      btn.setAttribute('aria-expanded', 'false');
-
-      btn.addEventListener('click', () => {
-        const expanded = desc.classList.toggle('expanded');
-        if (expanded) {
-          desc.style.maxHeight = desc.dataset.fullHeight + 'px';
-          btn.textContent = 'Ver menos';
-          btn.setAttribute('aria-expanded', 'true');
-        } else {
-          desc.style.maxHeight = desc.dataset.collapsedHeight + 'px';
-          btn.textContent = 'Ver más';
-          btn.setAttribute('aria-expanded', 'false');
-        }
-      });
-
-      // insert button after the description paragraph
-      desc.insertAdjacentElement('afterend', btn);
-
-      // Recalculate on images/fonts load and on window resize
-      const recalc = () => {
-        // temporarily expand to measure full height
-        desc.style.maxHeight = 'none';
-        desc.style.display = 'block';
-        const newFull = desc.scrollHeight;
-        const cs2 = window.getComputedStyle(desc);
-        let lh2 = pxToNumber(cs2.lineHeight);
-        if (!lh2 || lh2 === 0) {
-          const fontSize = pxToNumber(cs2.fontSize) || 16;
-          lh2 = fontSize * 1.2;
-        }
-        const newCollapsed = Math.round(lh2 * LINES);
-        desc.dataset.fullHeight = newFull;
-        desc.dataset.collapsedHeight = newCollapsed;
-        if (!desc.classList.contains('expanded')) {
-          desc.style.maxHeight = newCollapsed + 'px';
-          btn.textContent = 'Ver más';
-          btn.setAttribute('aria-expanded', 'false');
-        } else {
-          desc.style.maxHeight = newFull + 'px';
-          btn.textContent = 'Ver menos';
-          btn.setAttribute('aria-expanded', 'true');
-        }
-      };
-
-      // Recalculate after fonts/images load
-      window.addEventListener('load', recalc);
+      window.addEventListener('load', setupReadMore);
       window.addEventListener('resize', () => {
-        // small debounce
-        clearTimeout(desc._rmTimeout);
-        desc._rmTimeout = setTimeout(recalc, 150);
+        clearTimeout(window._rm);
+        window._rm = setTimeout(setupReadMore, 150);
       });
-    });
-  }
+      document.addEventListener('DOMContentLoaded', setupReadMore);
+    })();
+  </script>
 
-  // Run
-  document.addEventListener('DOMContentLoaded', setupReadMore);
-})();
-</script>
+  <!-- Agrupado por .tag: crea secciones con orden preferente, mantiene el DOM (mueve los nodos) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      const source = document.getElementById('speakers-list');
+      const target = document.getElementById('speakers-groups');
+      if (!source || !target) return;
+
+      const speakers = Array.from(source.querySelectorAll('.speaker'));
+
+      // Agrupar por etiqueta (.tag textContent)
+      const groups = new Map();
+      speakers.forEach(s => {
+        const tagEl = s.querySelector('.tag');
+        const tag = tagEl ? tagEl.textContent.trim() : 'Otros';
+        if (!groups.has(tag)) groups.set(tag, []);
+        groups.get(tag).push(s);
+      });
+
+      // Orden preferente
+      const preferred = ['Construcción','Vialidad','Hidráulica','Geotecnia','Materiales','Estructuras'];
+      const keys = Array.from(groups.keys()).sort((a,b) => {
+        const ia = preferred.indexOf(a);
+        const ib = preferred.indexOf(b);
+        if (ia !== -1 || ib !== -1) return (ia===-1?999:ia) - (ib===-1?999:ib);
+        return a.localeCompare(b, 'es', {sensitivity:'base'});
+      });
+
+      // Crear secciones y mover artículos
+      keys.forEach(key => {
+        const items = groups.get(key) || [];
+
+        // ordenar por nombre (h3)
+        items.sort((x,y) => {
+          const nx = x.querySelector('h3')?.textContent.trim() || '';
+          const ny = y.querySelector('h3')?.textContent.trim() || '';
+          return nx.localeCompare(ny, 'es', {sensitivity:'base'});
+        });
+
+        const section = document.createElement('section');
+        section.className = 'group';
+
+        const header = document.createElement('div');
+        header.className = 'group-header';
+
+        const title = document.createElement('h3');
+        title.className = 'group-title';
+        title.textContent = key;
+
+        const meta = document.createElement('div');
+        meta.className = 'group-meta';
+
+        const count = document.createElement('div');
+        count.className = 'group-count';
+        count.textContent = `${items.length} ponente${items.length !== 1 ? 's' : ''}`;
+
+        const toggle = document.createElement('button');
+        toggle.className = 'group-toggle';
+        toggle.type = 'button';
+        toggle.setAttribute('aria-expanded','true');
+        toggle.textContent = 'Ocultar';
+
+        meta.appendChild(count);
+        meta.appendChild(toggle);
+        header.appendChild(title);
+        header.appendChild(meta);
+
+        const grid = document.createElement('div');
+        grid.className = 'speakers-grid';
+
+        items.forEach(it => grid.appendChild(it));
+
+        section.appendChild(header);
+        section.appendChild(grid);
+        target.appendChild(section);
+
+        toggle.addEventListener('click', () => {
+          const collapsed = section.classList.toggle('collapsed');
+          if (collapsed) {
+            grid.style.display = 'none';
+            toggle.textContent = 'Mostrar';
+            toggle.setAttribute('aria-expanded','false');
+          } else {
+            grid.style.display = '';
+            toggle.textContent = 'Ocultar';
+            toggle.setAttribute('aria-expanded','true');
+          }
+        });
+      });
+
+      // Ocultar la lista origen (los artículos fueron movidos)
+      source.style.display = 'none';
+    });
+  </script>
 </body>
 </html>
