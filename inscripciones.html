@@ -232,7 +232,7 @@
     });
 
     // Inicialización de EmailJS con tu User ID real
-    emailjs.init("y3wak8BAWXn77vQpx");
+    emailjs.init("h5HVFHQhxGHYVvCjO");
 
     // Event listener para el formulario de inscripción
     document.getElementById('inscriptionForm').addEventListener('submit', function(e) {
@@ -243,7 +243,7 @@
       btn.disabled = true;
       btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
 
-      emailjs.sendForm('service_igo5l5i', 'template_7qco2t7', form)
+      emailjs.sendForm('service_vl1v69g', 'template_ls83twh', form)
         .then(function(response) {
           document.getElementById('successMessage').classList.add('show');
           document.getElementById('errorMessage').classList.remove('show');
